@@ -8,7 +8,10 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
-			backgroundImage: {},
+			dropShadow: {
+				logo: '2px 1px 1px rgb(70,70,70)',
+				hover: '0px 0px 4px rgba(255, 255, 255, 1)',
+			},
 		},
 	},
 	plugins: [],

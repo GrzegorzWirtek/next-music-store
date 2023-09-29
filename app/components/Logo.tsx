@@ -1,0 +1,23 @@
+import Image from 'next/image';
+import logo from '@/public/logo.svg';
+import { Shrikhand } from 'next/font/google';
+
+const shrikhand = Shrikhand({ subsets: ['latin'], weight: ['400'] });
+
+export default function Logo() {
+	return (
+		<div className='flex items-center cursor-pointer'>
+			<Image
+				className='drop-shadow-logo'
+				alt='Store logo'
+				src={logo}
+				width={30}
+				height={30}
+			/>
+			<h1
+				className={`${shrikhand.className} text-2xl tracking-tight text-[var(--light-blue-color)] drop-shadow-logo`}>
+				Next Music Store
+			</h1>
+		</div>
+	);
+}

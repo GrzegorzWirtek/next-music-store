@@ -9,10 +9,11 @@
 }
 
 :root {
-  --background-color: hwb(131 87% 5%);
+  --background-color: #def2e2;
   --blue-color: #5E349E;
   --light-blue-color: #2d9ce0;
   --red-color: #ce2929;
+  --red-color-lighter: #f23939;
   --yellow-color: #E3E144;
   --header-font-size: 70px;
 }

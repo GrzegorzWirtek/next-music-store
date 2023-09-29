@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -11,6 +11,9 @@ html {
 :root {
   --background-color: hwb(131 87% 5%);
   --blue-color: #5E349E;
+  --light-blue-color: #2d9ce0;
+  --red-color: #ce2929;
+  --yellow-color: #E3E144;
   --header-font-size: 70px;
 }
 

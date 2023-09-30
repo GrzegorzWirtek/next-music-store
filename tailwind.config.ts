@@ -12,6 +12,9 @@ const config: Config = {
 				logo: '2px 1px 1px rgb(70,70,70)',
 				hover: '0px 0px 4px rgba(255, 255, 255, 1)',
 			},
+			boxShadow: {
+				hover: '0px 0px 5px 0px rgba(88, 43, 157, 1)',
+			},
 		},
 	},
 	plugins: [],

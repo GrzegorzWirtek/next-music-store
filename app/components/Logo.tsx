@@ -15,7 +15,7 @@ export default function Logo() {
 				height={30}
 			/>
 			<h1
-				className={`${shrikhand.className} text-2xl tracking-tight text-[var(--light-blue-color)] drop-shadow-logo`}>
+				className={`${shrikhand.className} text-2xl tracking-tight text-[var(--light-gray)] drop-shadow-logo`}>
 				Next Music Store
 			</h1>
 		</div>

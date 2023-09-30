@@ -9,12 +9,12 @@ const plaifairDisplay = Playfair_Display({
 });
 const heebo = Shrikhand({ subsets: ['latin'], weight: ['400'] });
 
-export default function Title() {
+export default function HomeHeader() {
 	return (
 		<section className='px-10 flex flex-row grow flex-wrap justify-center'>
 			<div className='flex flex-col basis-1/2 items-end justify-center'>
 				<h2
-					className={`${plaifairDisplay.className} mb-3 text-[4.7vw] xl:text-6xl text-right text-[var(--blue-color)] leading-none`}>
+					className={`${plaifairDisplay.className} mb-3 text-[4.7vw] xl:text-6xl text-right text-[var(--blue)] leading-none`}>
 					If you want your music to be the best, you need the best instruments.
 				</h2>
 				<p className='text-right leading-tight'>

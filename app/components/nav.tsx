@@ -2,17 +2,20 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import useResize from '@/utils/useResize';
 
 const HAM_ITEMS = Array(3).fill(null);
 const NAV_ITEMS = ['Products', 'Categories', 'Contact'];
 
 export default function Nav() {
 	const [mobileNavActive, setMobileNavActive] = useState(false);
-	const isDesktopSize = useResize();
+
 	useEffect(() => {
-		setMobileNavActive(isDesktopSize);
-	}, [isDesktopSize]);
+		const media = window.matchMedia('(min-width: 768px)');
+		if (mobileNavActive !== true) return;
+		const listener = () => setMobileNavActive(!media.matches);
+		window.addEventListener('resize', listener);
+		return () => window.removeEventListener('resize', listener);
+	}, [mobileNavActive]);
 
 	return (
 		<nav className='grow'>

@@ -8,11 +8,9 @@ export default function Logo() {
 	return (
 		<div className='flex items-center cursor-pointer'>
 			<Image
-				className='drop-shadow-logo'
+				className='drop-shadow-logo w-[30px] h-[30px]'
 				alt='Store logo'
 				src={logo}
-				width={30}
-				height={30}
 			/>
 			<h1
 				className={`${shrikhand.className} text-2xl tracking-tight text-[var(--light-gray)] drop-shadow-logo`}>

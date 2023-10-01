@@ -9,10 +9,9 @@ export default function HomeProducts() {
 		<section className='flex flex-wrap gap-10 justify-center mt-24 mb-60'>
 			<div className='flex flex-col items-center pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-lg transition-hover duration-200 hover:shadow-hover'>
 				<Image
-					className='transition-hover ease-in-out duration-500 hover:scale-105 cursor-pointer p-10'
+					className='h-auto w-auto object-contain transition-hover ease-in-out duration-500 hover:scale-105 cursor-pointer p-10'
 					alt='a'
 					src={img2}
-					objectFit='contain'
 				/>
 				<div className='text-center mr-3'>
 					<p>Very good piano</p>
@@ -22,10 +21,9 @@ export default function HomeProducts() {
 			</div>
 			<div className='flex flex-col items-center pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-lg transition-hover duration-200 hover:shadow-hover'>
 				<Image
-					className='transition-hover ease-in-out duration-500 hover:scale-105 cursor-pointer p-10'
+					className='h-auto w-auto object-contain transition-hover ease-in-out duration-500 hover:scale-105 cursor-pointer p-10'
 					alt='a'
 					src={img1}
-					objectFit='contain'
 				/>
 				<div className='text-center mr-3'>
 					<p>Very good piano</p>
@@ -35,10 +33,9 @@ export default function HomeProducts() {
 			</div>
 			<div className='flex flex-col items-center pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-lg transition-hover duration-200 hover:shadow-hover'>
 				<Image
-					className='transition-hover ease-in-out duration-500 hover:scale-105 cursor-pointer p-10'
+					className='h-auto w-auto object-contain transition-hover ease-in-out duration-500 hover:scale-105 cursor-pointer p-10'
 					alt='a'
 					src={img3}
-					objectFit='contain'
 				/>
 				<div className='text-center mr-3'>
 					<p>Very good piano</p>

@@ -24,7 +24,11 @@ export default function HomeHeader() {
 			</div>
 
 			<div className='flex flex-wrap basis-1/2 justify-center items-center px-10 py-4'>
-				<Image alt='piano' src={piano} objectFit='contain' />
+				<Image
+					className='w-auto h-auto object-contain'
+					alt='piano'
+					src={piano}
+				/>
 				<div className='text-center mr-3'>
 					<p>Very good piano</p>
 					<p>&#8364;4500</p>

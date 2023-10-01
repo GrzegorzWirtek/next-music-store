@@ -9,16 +9,20 @@
 }
 
 :root {
+  /* dimensions */
+  --min-app-width: 300px;
+
+  /* colors */
   --main-color: #886438;
   --sub-color: #463b38;
-
   --blue: #582b9d;
   --light-gray: #f1f0f0;
   --red: #910015;
   --red-lighter: #eb0023;
   --yellow: #faf8e0;
-
   --white-transparent: rgba(255, 255, 255, 0.733);
+
+  /* text */
   --header-font-size: 70px;
 }
 
@@ -31,5 +35,6 @@
 }
 
 body {
-  background: var(--yellow)
+  background: var(--yellow);
+  min-width: var(--min-app-width)
 }

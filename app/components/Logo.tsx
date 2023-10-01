@@ -6,7 +6,7 @@ const shrikhand = Shrikhand({ subsets: ['latin'], weight: ['400'] });
 
 export default function Logo() {
 	return (
-		<div className='flex items-center cursor-pointer'>
+		<div className='flex items-center basis-full justify-center lg:basis-auto cursor-pointer '>
 			<Image
 				className='drop-shadow-logo w-[30px] h-[30px]'
 				alt='Store logo'

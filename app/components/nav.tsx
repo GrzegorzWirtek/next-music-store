@@ -3,14 +3,14 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-const HAM_ITEMS = Array(3).fill(null);
-const NAV_ITEMS = ['Products', 'Categories', 'Contact'];
-
 export default function Nav() {
+	const HAM_ITEMS = Array(3).fill(null);
+	const NAV_ITEMS = ['Products', 'Categories', 'Contact'];
+	const MIN_WIDHT_DESKTOP = 1024;
 	const [mobileNavActive, setMobileNavActive] = useState(false);
 
 	useEffect(() => {
-		const media = window.matchMedia('(min-width: 768px)');
+		const media = window.matchMedia(`(min-width: ${MIN_WIDHT_DESKTOP}px)`);
 		if (mobileNavActive !== true) return;
 		const listener = () => setMobileNavActive(!media.matches);
 		window.addEventListener('resize', listener);
@@ -18,23 +18,23 @@ export default function Nav() {
 	}, [mobileNavActive]);
 
 	return (
-		<nav className='grow'>
+		<nav className='lg:grow max-w-[20%] lg:max-w-full'>
 			<div
-				className='flex md:hidden w-8 h-5 flex-col justify-between cursor-pointer'
+				className='flex lg:hidden w-8 h-5 p-2 box-content flex-col justify-between cursor-pointer'
 				onClick={() => setMobileNavActive((prev) => !prev)}>
 				{HAM_ITEMS.map((_, index) => (
 					<div key={index} className='h-0.5 w-full rounded-3xl bg-white'></div>
 				))}
 			</div>
 			<ul
-				className={`absolute md:static top-[150px] -left-full w-full md:-translate-x-0 md:transition-none transition-transform  md:duration-0 md:w-auto bg-blue-600 flex flex-col md:flex-row md:flex-wrap gap-4 ${
+				className={`absolute lg:static -left-full top-32 w-full h-[40vh] pb-10 lg:p-0 lg:h-auto lg:-translate-x-0 lg:transition-none transition-transform lg:duration-0 lg:w-auto flex flex-col items-center justify-center lg:justify-start lg:flex-row lg:flex-wrap gap-4 bg-[var(--red)] ${
 					mobileNavActive ? 'translate-x-full' : 'null'
 				}`}>
 				{NAV_ITEMS.map((item) => (
-					<li key={item}>
+					<li className='mb-3 lg:mb-auto' key={item}>
 						<Link
 							href={`/${item.toLocaleLowerCase()}`}
-							className='text-white transition-hover duration-200 md:hover:drop-shadow-hover'>
+							className='text-white transition-hover duration-200 text-xl lg:text-base lg:hover:drop-shadow-hover'>
 							{item}
 						</Link>
 					</li>

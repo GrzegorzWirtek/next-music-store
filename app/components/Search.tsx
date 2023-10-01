@@ -2,7 +2,7 @@ export default function Search() {
 	return (
 		<input
 			type='search'
-			className='pl-10 border rounded-full outline-none transition-focus duration-100 focus:drop-shadow-hover'
+			className='max-w-[60%] pl-6 border rounded-full outline-none transition-focus duration-100 focus:drop-shadow-hover text-xl lg:text-base'
 			placeholder='Search'
 			required></input>
 	);

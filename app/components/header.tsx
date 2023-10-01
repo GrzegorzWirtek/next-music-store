@@ -5,7 +5,7 @@ import Search from './Search';
 
 export default function Header() {
 	return (
-		<header className='sticky z-10 top-0 left-0 w-full basis-full flex flex-wrap items-center gap-8 px-8 py-5 bg-[var(--red)]'>
+		<header className='h-32 lg:h-auto sticky z-10 top-0 left-0 w-full basis-full flex flex-wrap items-center justify-between lg:gap-8 px-2 lg:px-8 py-2 lg:py-5 bg-[var(--red)]'>
 			<Logo />
 			<Nav />
 			<Search />

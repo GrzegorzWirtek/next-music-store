@@ -7,7 +7,7 @@ import Button from './Button';
 export default function HomeProducts() {
 	return (
 		<section className='flex flex-wrap gap-10 justify-center mt-24 mb-60'>
-			<div className='flex flex-col items-center pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-lg transition-hover duration-200 hover:shadow-hover'>
+			<div className='max-w-[300px] flex flex-col items-center pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-lg transition-hover duration-200 hover:shadow-hover'>
 				<Image
 					className='h-auto w-auto object-contain transition-hover ease-in-out duration-500 hover:scale-105 cursor-pointer p-10'
 					alt='a'
@@ -19,7 +19,7 @@ export default function HomeProducts() {
 				</div>
 				<Button textContent='Add to cart' />
 			</div>
-			<div className='flex flex-col items-center pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-lg transition-hover duration-200 hover:shadow-hover'>
+			<div className='max-w-[300px] flex flex-col items-center pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-lg transition-hover duration-200 hover:shadow-hover'>
 				<Image
 					className='h-auto w-auto object-contain transition-hover ease-in-out duration-500 hover:scale-105 cursor-pointer p-10'
 					alt='a'
@@ -31,7 +31,7 @@ export default function HomeProducts() {
 				</div>
 				<Button textContent='Add to cart' />
 			</div>
-			<div className='flex flex-col items-center pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-lg transition-hover duration-200 hover:shadow-hover'>
+			<div className='max-w-[300px] flex flex-col items-center pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-lg transition-hover duration-200 hover:shadow-hover'>
 				<Image
 					className='h-auto w-auto object-contain transition-hover ease-in-out duration-500 hover:scale-105 cursor-pointer p-10'
 					alt='a'

@@ -1,5 +1,5 @@
-import HomeHeader from './components/HomeHeader';
-import HomeProducts from './components/HomeProducts';
+import HomeHeader from '../components/HomeHeader';
+import HomeProducts from '../components/HomeProducts';
 
 export default function Home() {
 	return (

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import disablingScroll from '@/utils/disablingScroll';
+import Ham from './Ham';
 
 export default function Nav() {
 	const NAV_ITEMS = ['Products', 'Categories', 'Contact'];
@@ -24,24 +25,12 @@ export default function Nav() {
 
 	return (
 		<nav className='lg:grow max-w-[20%] lg:max-w-full'>
-			<div
-				className='flex lg:hidden w-8 h-5 p-2 box-content flex-col justify-between cursor-pointer group'
-				onClick={toggleMobileNav}>
-				<div
-					className={`h-0.5 w-full rounded-3xl bg-white transition-transform ${
-						mobileNavActive && 'rotate-45 translate-y-[calc((20px/2)-1px)]'
-					}`}></div>
-				<div
-					className={`h-0.5 w-full rounded-3xl bg-white transition-transform ${
-						mobileNavActive && 'rotate-45'
-					}`}></div>
-				<div
-					className={`h-0.5 w-full rounded-3xl bg-white transition-transform ${
-						mobileNavActive && '-rotate-45 -translate-y-[calc((20px/2)-1px)]'
-					}`}></div>
-			</div>
+			<Ham
+				mobileNavActive={mobileNavActive}
+				toggleMobileNav={toggleMobileNav}
+			/>
 			<ul
-				className={`absolute lg:static -left-full top-32 w-full h-[40vh] pb-10 lg:p-0 lg:h-auto lg:-translate-x-0 lg:transition-none transition-transform lg:duration-0 lg:w-auto flex flex-col items-center justify-center lg:justify-start lg:flex-row lg:flex-wrap gap-4 bg-[var(--red)] ${
+				className={`fixed lg:static -left-full top-32 w-full min-h-[40vh] lg:min-h-min pb-10 pt-10 lg:p-0 lg:h-auto lg:-translate-x-0 lg:transition-none transition-transform lg:duration-0 lg:w-auto flex flex-col items-center justify-center lg:justify-start lg:flex-row lg:flex-wrap gap-4 bg-[var(--red)] blur-none ${
 					mobileNavActive && 'translate-x-full'
 				}`}>
 				{NAV_ITEMS.map((item) => (

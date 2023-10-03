@@ -38,3 +38,27 @@ body {
   background: var(--yellow);
   min-width: var(--min-app-width)
 }
+
+.mobile-scroll-off {
+  overflow-y: hidden;
+}
+
+.desktop-scroll-off {
+  position: fixed;
+  overflow-y: scroll;
+}
+
+.body-blur>*:not(#yo) {
+  filter: blur(4px);
+  transition: filter 0.2s;
+}
+
+.body-blur::after {
+  content: '';
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.076);
+}

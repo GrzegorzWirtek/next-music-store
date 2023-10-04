@@ -6,6 +6,7 @@ const productSchema = new Schema({
 	price: String,
 	descr: String,
 	images: [String],
+	main: Boolean,
 });
 
 const Product = (models && models.Product) || model('Product', productSchema);

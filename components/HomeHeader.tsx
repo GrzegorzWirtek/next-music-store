@@ -1,15 +1,20 @@
-import piano from '@/public/piano.png';
 import Image from 'next/image';
-import { Playfair_Display, Bebas_Neue, Shrikhand } from 'next/font/google';
+import { Playfair_Display } from 'next/font/google';
 import Button from './Button';
+import { ProductProps } from '@/utils/types';
 
 const plaifairDisplay = Playfair_Display({
 	subsets: ['latin'],
 	weight: ['400'],
 });
-const heebo = Shrikhand({ subsets: ['latin'], weight: ['400'] });
 
-export default function HomeHeader() {
+export default function HomeHeader({
+	mainProduct,
+}: {
+	mainProduct: ProductProps;
+}) {
+	const { title, price, images } = mainProduct;
+	const baseImgUrl = process.env.UPLOADTHING_BASE_URL;
 	return (
 		<section className='px-10 flex flex-row grow flex-wrap justify-center'>
 			<div className='flex flex-col basis-1/2 items-end justify-center'>
@@ -26,12 +31,15 @@ export default function HomeHeader() {
 			<div className='flex flex-wrap basis-1/2 justify-center items-center px-10 py-4'>
 				<Image
 					className='w-auto h-auto object-contain'
-					alt='piano'
-					src={piano}
+					alt={title}
+					src={`${baseImgUrl}${images[0]}`}
+					width='0'
+					height='0'
+					sizes='100vw'
 				/>
 				<div className='text-center mr-3'>
-					<p>Very good piano</p>
-					<p>&#8364;4500</p>
+					<h2>{title}</h2>
+					<p>&#8364;{price}</p>
 				</div>
 				<Button textContent='Details' />
 			</div>

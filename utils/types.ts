@@ -5,4 +5,5 @@ export interface ProductProps {
 	descr: string;
 	price: number;
 	title: string;
+	main: boolean;
 }

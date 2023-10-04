@@ -6,7 +6,6 @@ export default async function getProducts() {
 		await connectMongoDB();
 		const products = await Product.find();
 		return JSON.parse(JSON.stringify(products));
-		// return products;
 	} catch (error) {
 		console.log(error);
 	}

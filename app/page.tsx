@@ -1,14 +1,14 @@
 import HomeHeader from '../components/HomeHeader';
 import getProducts from '@/utils/getProducts';
 import Product from '@/components/Product';
-import { ProductProps } from '@/utils/types';
+import { Product as ProductProps } from '@/utils/types';
 
 export default async function Home() {
 	const products = await getProducts();
-	const mainIndex = products.findIndex(
+	const mainProductIndex = products.findIndex(
 		(product: ProductProps) => product.main === true,
 	);
-	const mainProduct = products.splice(mainIndex, 1);
+	const mainProduct = products.splice(mainProductIndex, 1);
 
 	return (
 		<main className='max-w-7xl m-auto'>

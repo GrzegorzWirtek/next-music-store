@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import Button from './Button';
-import { ProductProps } from '@/utils/types';
+import { Product } from '@/utils/types';
 
 export default function Product({
 	product,
 }: {
 	key: string;
-	product: ProductProps;
+	product: Product;
 }) {
 	const baseImgUrl = process.env.UPLOADTHING_BASE_URL;
 	const { title, price, images } = product;

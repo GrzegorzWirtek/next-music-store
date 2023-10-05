@@ -1,18 +1,14 @@
 import Image from 'next/image';
 import { Playfair_Display } from 'next/font/google';
 import Button from './Button';
-import { ProductProps } from '@/utils/types';
+import { Product } from '@/utils/types';
 
 const plaifairDisplay = Playfair_Display({
 	subsets: ['latin'],
 	weight: ['400'],
 });
 
-export default function HomeHeader({
-	mainProduct,
-}: {
-	mainProduct: ProductProps;
-}) {
+export default function HomeHeader({ mainProduct }: { mainProduct: Product }) {
 	const { title, price, images } = mainProduct;
 	const baseImgUrl = process.env.UPLOADTHING_BASE_URL;
 	return (

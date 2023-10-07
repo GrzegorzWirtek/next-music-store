@@ -1,15 +1,16 @@
 import Image from 'next/image';
 import { Playfair_Display } from 'next/font/google';
-import Button from './Button';
 import Product from '@/components/Product';
 import { Product as ProductProps } from '@/utils/types';
+import getProducts from '@/utils/getProducts';
 
 const plaifairDisplay = Playfair_Display({
 	subsets: ['latin'],
 	weight: ['400'],
 });
 
-export default function HomeHeader({ products }: { products: ProductProps[] }) {
+export default async function LangindPage() {
+	const products = await getProducts();
 	const mainProductIndex = products.findIndex(
 		(product: ProductProps) => product.main === true,
 	);
@@ -38,7 +39,6 @@ export default function HomeHeader({ products }: { products: ProductProps[] }) {
 					height='0'
 					sizes='100vw'
 				/>
-
 				<div className='basis-auto smr-3 grid grid-cols-2 grid-rows-2'>
 					<h2 className='row-start-1 row-end-2 text-center'>
 						{mainProduct.title}

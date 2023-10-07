@@ -1,12 +1,9 @@
-import HomeHeader from '../components/HomeHeader';
-import getProducts from '@/utils/getProducts';
+import LangindPage from '../components/LandingPage';
 
-export default async function Home() {
-	const products = await getProducts();
-
+export default function Home() {
 	return (
 		<main className='max-w-7xl m-auto'>
-			<HomeHeader products={products} />
+			<LangindPage />
 		</main>
 	);
 }

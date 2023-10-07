@@ -51,7 +51,6 @@ body {
 
 .body-blur>*:not(#yo) {
   filter: blur(4px);
-  transition: filter 0.2s;
 }
 
 .body-blur::after {

@@ -3,7 +3,7 @@ interface Props {
 	toggleMobileNav: () => void;
 }
 
-export default function Ham({ mobileNavActive, toggleMobileNav }: Props) {
+export default function ham({ mobileNavActive, toggleMobileNav }: Props) {
 	return (
 		<div
 			className='flex lg:hidden w-8 h-5 p-2 box-content flex-col justify-between cursor-pointer group'

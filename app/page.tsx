@@ -1,4 +1,4 @@
-import LangindPage from '../components/LandingPage';
+import LangindPage from '../components/landingPage';
 
 export default function Home() {
 	return (

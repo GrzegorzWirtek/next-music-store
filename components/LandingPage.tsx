@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Playfair_Display } from 'next/font/google';
-import Product from '@/components/Product';
+import Product from '@/components/product';
 import { Product as ProductProps } from '@/utils/types';
 import getProducts from '@/utils/getProducts';
 
@@ -11,12 +11,14 @@ const plaifairDisplay = Playfair_Display({
 
 export default async function LangindPage() {
 	const products = await getProducts();
+
 	const mainProductIndex = products.findIndex(
 		(product: ProductProps) => product.main === true,
 	);
 	const mainProduct = products.splice(mainProductIndex, 1)[0];
 
 	const baseImgUrl = process.env.UPLOADTHING_BASE_URL;
+
 	return (
 		<section className='flex flex-row grow flex-wrap justify-center'>
 			<div className='flex flex-col sm:basis-1/2 items-end justify-center max-w-[320px] sm:max-w-full'>

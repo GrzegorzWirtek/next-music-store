@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import disablingScroll from '@/utils/disablingScroll';
-import Ham from './Ham';
+import Ham from './ham';
 
 export default function Nav() {
 	const NAV_ITEMS = ['Products', 'Categories', 'Contact'];

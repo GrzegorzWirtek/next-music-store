@@ -1,7 +1,7 @@
-import Cart from './Cart';
-import Logo from './Logo';
-import Nav from './Nav';
-import Search from './Search';
+import Cart from './cart';
+import Logo from './logo';
+import Nav from './nav';
+import Search from './search';
 
 export default function Header() {
 	return (

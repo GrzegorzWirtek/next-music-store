@@ -40,6 +40,7 @@ export default async function LangindPage() {
 					width='0'
 					height='0'
 					sizes='100vw'
+					priority
 				/>
 				<div className='basis-auto smr-3 grid grid-cols-2 grid-rows-2'>
 					<h2 className='row-start-1 row-end-2 text-center'>

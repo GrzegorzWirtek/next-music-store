@@ -1,13 +1,8 @@
 import Image from 'next/image';
-import { Playfair_Display } from 'next/font/google';
+import { plaifairDisplay } from '@/utils/fonts';
 import Product from '@/components/product';
 import { Product as ProductProps } from '@/utils/types';
 import getProducts from '@/utils/getProducts';
-
-const plaifairDisplay = Playfair_Display({
-	subsets: ['latin'],
-	weight: ['400'],
-});
 
 export default async function LangindPage() {
 	const products = await getProducts();

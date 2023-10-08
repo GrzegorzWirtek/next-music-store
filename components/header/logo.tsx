@@ -1,9 +1,7 @@
 import Image from 'next/image';
 import logo from '@/public/logo.svg';
-import { Shrikhand } from 'next/font/google';
+import { shrikhand } from '@/utils/fonts';
 import Link from 'next/link';
-
-const shrikhand = Shrikhand({ subsets: ['latin'], weight: ['400'] });
 
 export default function Logo() {
 	return (

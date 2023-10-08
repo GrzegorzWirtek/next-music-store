@@ -20,6 +20,7 @@ export default function Product({
 					height='0'
 					sizes='100vw'
 					className='h-auto w-auto object-contain transition-hover ease-in-out duration-500 hover:scale-105 cursor-pointer p-10'
+					priority
 				/>
 				<h2>{title}</h2>
 				<p>&#8364;{price}</p>

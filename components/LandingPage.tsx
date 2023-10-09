@@ -29,18 +29,18 @@ export default async function LangindPage() {
 				</p>
 			</div>
 
-			<div className='flex flex-wrap sm:basis-1/2 justify-center items-center py-4 mb-16'>
-				<Image
-					className='w-auto h-auto object-contain basis-full'
-					alt={mainProduct.title}
-					src={mainImg}
-					width='0'
-					height='0'
-					sizes='100vw'
-					priority
-					placeholder='blur'
-					blurDataURL={mainImgBlurData}
-				/>
+			<div className='flex flex-wrap basis-full sm:basis-1/2 justify-center items-center py-4 mb-16'>
+				<div className='relative aspect-square basic-full w-full'>
+					<Image
+						alt={mainProduct.title}
+						src={mainImg}
+						fill
+						objectFit='contain'
+						priority
+						placeholder='blur'
+						blurDataURL={mainImgBlurData}
+					/>
+				</div>
 				<div className='basis-auto smr-3 grid grid-cols-2 grid-rows-2'>
 					<h2 className='row-start-1 row-end-2 text-center'>
 						{mainProduct.title}

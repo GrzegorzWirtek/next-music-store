@@ -3,6 +3,7 @@ import { plaifairDisplay } from '@/utils/fonts';
 import Product from '@/components/product';
 import { Product as ProductProps } from '@/utils/types';
 import getProducts from '@/utils/getProducts';
+import getBase64 from '@/utils/getBase64';
 
 export default async function LangindPage() {
 	const products = await getProducts();
@@ -11,8 +12,9 @@ export default async function LangindPage() {
 		(product: ProductProps) => product.main === true,
 	);
 	const mainProduct = products.splice(mainProductIndex, 1)[0];
-
 	const baseImgUrl = process.env.UPLOADTHING_BASE_URL;
+	const mainImg = `${baseImgUrl}${mainProduct.images[0]}`;
+	const mainImgBlurData = await getBase64(mainImg);
 
 	return (
 		<section className='flex flex-row grow flex-wrap justify-center'>
@@ -31,11 +33,13 @@ export default async function LangindPage() {
 				<Image
 					className='w-auto h-auto object-contain basis-full'
 					alt={mainProduct.title}
-					src={`${baseImgUrl}${mainProduct.images[0]}`}
+					src={mainImg}
 					width='0'
 					height='0'
 					sizes='100vw'
 					priority
+					placeholder='blur'
+					blurDataURL={mainImgBlurData}
 				/>
 				<div className='basis-auto smr-3 grid grid-cols-2 grid-rows-2'>
 					<h2 className='row-start-1 row-end-2 text-center'>

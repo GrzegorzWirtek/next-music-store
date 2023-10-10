@@ -5,5 +5,8 @@ export interface Product {
 	descr: string;
 	price: number;
 	title: string;
-	main: boolean;
+	main?: boolean;
+	landingPage?: boolean;
 }
+
+export type SearchParameters = { landingPage: true };

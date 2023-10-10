@@ -22,8 +22,7 @@ export default async function Product({
 						alt={title}
 						src={img}
 						fill
-						objectFit='contain'
-						className='transition-hover ease-in-out duration-500 hover:scale-105 cursor-pointer p-3'
+						className='object-contain transition-hover ease-in-out duration-500 hover:scale-105 cursor-pointer p-3'
 						priority
 						placeholder='blur'
 						blurDataURL={imgBlurData}

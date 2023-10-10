@@ -32,10 +32,10 @@ export default async function LangindPage() {
 			<div className='flex flex-wrap basis-full sm:basis-1/2 justify-center items-center py-4 mb-16'>
 				<div className='relative aspect-square basic-full w-full'>
 					<Image
+						className='object-contain'
 						alt={mainProduct.title}
 						src={mainImg}
 						fill
-						objectFit='contain'
 						priority
 						placeholder='blur'
 						blurDataURL={mainImgBlurData}

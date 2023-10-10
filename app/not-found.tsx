@@ -8,7 +8,7 @@ export default function NotFound() {
 			<Image className='w-24' alt='Page not found' src={err404} />
 			<h2 className='min-w-[300px] mt-2 mb-16 pl-4 pr-4 text-2xl text-center'>{`Sorry, that page doesn't exist`}</h2>
 			<Link
-				className={`bg-[var(--blue)] hover:bg-[var(--blue-lighter)] transition-hover duration-200 hover:bg-[var(--red-lighter)] text-white py-2 px-4 rounded-lg`}
+				className={`bg-[var(--blue)] hover:bg-[var(--blue-lighter)] transition-hover duration-200 text-white py-2 px-4 rounded-lg`}
 				href='/'>
 				Home page
 			</Link>

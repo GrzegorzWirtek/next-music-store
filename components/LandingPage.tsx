@@ -6,14 +6,14 @@ import getProducts from '@/utils/getProducts';
 import getBase64 from '@/utils/getBase64';
 
 export default async function LangindPage() {
-	const products = await getProducts({ landingPage: true });
+	const products = await getProducts(5, { landingPage: true });
 
 	const mainProductIndex = products.findIndex(
 		(product: ProductProps) => product.main === true,
 	);
 	const mainProduct = products.splice(mainProductIndex, 1)[0];
 	const limitedNrOfProducts = products.slice(0, 4);
-	const baseImgUrl = process.env.UPLOADTHING_BASE_URL;
+	const baseImgUrl = process.env.NEXT_PUBLIC_UPLOADTHING_BASE_URL;
 	const mainImg = `${baseImgUrl}${mainProduct.images[0]}`;
 	const mainImgBlurData = await getBase64(mainImg);
 

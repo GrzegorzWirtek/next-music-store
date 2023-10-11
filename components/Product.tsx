@@ -15,7 +15,7 @@ export default function Product({
 	const img = `${baseImgUrl}${images[0]}`;
 
 	return (
-		<div className='max-w-[300px] flex flex-col basis-[calc(50%-18px)] sm:basis-full m-1.5 sm:m-2 pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-md transition-hover duration-200 hover:shadow-hover'>
+		<div className='max-w-[280px] flex flex-col basis-[calc(50%-18px)] sm:basis-full m-1.5 sm:m-2 pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-md transition-hover duration-200 hover:shadow-hover'>
 			<div className='text-center'>
 				<div className='relative self-stretch aspect-square'>
 					<Image

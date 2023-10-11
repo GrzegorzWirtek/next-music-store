@@ -2,6 +2,7 @@
 
 import { Product as ProductProps } from '@/utils/types';
 import Product from './product';
+import Spinner from './Spinner';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useState } from 'react';
 import getProducts from '@/utils/getProducts';
@@ -17,7 +18,6 @@ export default function ProductsList({
 	const [isThereMore, setIsThereMore] = useState(true);
 
 	const getMoreProducts = async () => {
-		await new Promise((res) => setTimeout(res, 2000));
 		const newLimit = productsList.length + limit;
 		const data = await getProducts(newLimit);
 
@@ -25,13 +25,19 @@ export default function ProductsList({
 		setProductsList(data);
 	};
 
+	const loaderComponent = (
+		<div className='basis-full flex justify-center my-10'>
+			<Spinner />
+		</div>
+	);
+
 	return (
 		<InfiniteScroll
 			className='flex flex-wrap justify-center'
 			dataLength={productsList.length}
 			next={getMoreProducts}
 			hasMore={isThereMore}
-			loader={<p className='bg-yellow-500 basis-full'>..Loading</p>}
+			loader={loaderComponent}
 			endMessage={<p className='basis-full'>Nothing more to show</p>}>
 			{productsList.map((product) => (
 				<Product key={product._id} product={product} />

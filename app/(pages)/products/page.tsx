@@ -4,7 +4,7 @@ import { plaifairDisplay } from '@/utils/fonts';
 
 export default async function Products() {
 	const limit = 8;
-	const products = await getProducts(limit);
+	const products = await getProducts();
 
 	return (
 		<div className='mx-auto max-w-7xl'>

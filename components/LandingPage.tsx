@@ -4,6 +4,7 @@ import Product from '@/components/product';
 import { Product as ProductProps } from '@/utils/types';
 import getProducts from '@/utils/getProducts';
 import getBase64 from '@/utils/getBase64';
+import Link from 'next/link';
 
 export default async function LangindPage() {
 	const products = await getProducts(5, { landingPage: true });
@@ -49,9 +50,11 @@ export default async function LangindPage() {
 					<p className='row-start-2 row-end-3 text-center'>
 						&#8364;{mainProduct.price}
 					</p>
-					<button className='bg-[var(--red)] transition-hover duration-200 hover:bg-[var(--red-lighter)] text-white py-2 px-4 rounded-lg row-start-1 row-end-3 self-center'>
+					<Link
+						href={`/${mainProduct._id}`}
+						className='bg-[var(--red)] transition-hover duration-200 hover:bg-[var(--red-lighter)] text-white py-2 px-4 rounded-lg row-start-1 row-end-3 self-center'>
 						Details
-					</button>
+					</Link>
 				</div>
 			</div>
 

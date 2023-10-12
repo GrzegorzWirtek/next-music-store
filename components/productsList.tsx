@@ -14,12 +14,15 @@ export default function ProductsList({
 	products: ProductProps[];
 	limit: number;
 }) {
-	const [productsList, setProductsList] = useState(products);
+	// const [productsList, setProductsList] = useState(products);
+	const [productsList, setProductsList] = useState(products.slice(0, 8));
 	const [isThereMore, setIsThereMore] = useState(true);
 
 	const getMoreProducts = async () => {
 		const newLimit = productsList.length + limit;
-		const data = await getProducts(newLimit);
+		const addedProducts = products.slice(productsList.length, newLimit);
+		const data = productsList.concat(addedProducts);
+		// const data = await getProducts(newLimit);
 
 		if (data.length === productsList.length) return setIsThereMore(false);
 		setProductsList(data);
@@ -38,7 +41,11 @@ export default function ProductsList({
 			next={getMoreProducts}
 			hasMore={isThereMore}
 			loader={loaderComponent}
-			endMessage={<p className='basis-full'>Nothing more to show</p>}>
+			endMessage={
+				<p className='basis-full flex justify-center my-10 font-bold'>
+					Nothing more to show
+				</p>
+			}>
 			{productsList.map((product) => (
 				<Product key={product._id} product={product} />
 			))}

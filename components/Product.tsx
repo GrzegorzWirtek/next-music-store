@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Button from './button';
 import { Product } from '@/utils/types';
+import Link from 'next/link';
 
 export default function Product({
 	product,
@@ -11,11 +12,13 @@ export default function Product({
 	product: Product;
 }) {
 	const baseImgUrl = process.env.NEXT_PUBLIC_UPLOADTHING_BASE_URL;
-	const { title, price, images } = product;
+	const { title, price, images, _id } = product;
 	const img = `${baseImgUrl}${images[0]}`;
 
 	return (
-		<div className='max-w-[280px] flex flex-col basis-[calc(50%-18px)] sm:basis-full m-1.5 sm:m-2 pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-md transition-hover duration-200 hover:shadow-hover'>
+		<Link
+			href={`/${_id}`}
+			className='max-w-[280px] flex flex-col basis-[calc(50%-18px)] sm:basis-full m-1.5 sm:m-2 pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-md transition-hover duration-200 hover:shadow-hover'>
 			<div className='text-center'>
 				<div className='relative self-stretch aspect-square'>
 					<Image
@@ -30,6 +33,6 @@ export default function Product({
 				<p>&#8364;{price}</p>
 			</div>
 			<Button textContent='Add to cart' />
-		</div>
+		</Link>
 	);
 }

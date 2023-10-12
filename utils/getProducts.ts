@@ -11,7 +11,7 @@ export default async function getProducts(
 	try {
 		await connectMongoDB();
 		const products = await Product.find(search ? search : {}).limit(
-			limit ? limit : 3,
+			limit ? limit : 100,
 		);
 		return JSON.parse(JSON.stringify(products));
 	} catch (error) {

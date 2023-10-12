@@ -9,4 +9,4 @@ export interface Product {
 	landingPage?: boolean;
 }
 
-export type SearchParameters = { landingPage: boolean };
+export type SearchParameters = { landingPage: boolean } | { _id: string };

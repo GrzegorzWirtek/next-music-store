@@ -10,3 +10,7 @@ export interface Product {
 }
 
 export type SearchParameters = { landingPage: boolean } | { _id: string };
+
+export interface SearchParams {
+	searchParams: { v: string };
+}

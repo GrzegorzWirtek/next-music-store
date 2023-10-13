@@ -3,7 +3,8 @@
 import Image from 'next/image';
 import Button from './button';
 import { Product } from '@/utils/types';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { SyntheticEvent } from 'react';
 
 export default function Product({
 	product,
@@ -14,11 +15,18 @@ export default function Product({
 	const baseImgUrl = process.env.NEXT_PUBLIC_UPLOADTHING_BASE_URL;
 	const { title, price, images, _id } = product;
 	const img = `${baseImgUrl}${images[0]}`;
+	const router = useRouter();
+
+	const handleClick = (e: SyntheticEvent) => {
+		const target = e.target as HTMLElement;
+		if (target.id === 'button') return;
+		router.push(`/${_id}`);
+	};
 
 	return (
-		<Link
-			href={`/${_id}`}
-			className='max-w-[280px] flex flex-col basis-[calc(50%-18px)] sm:basis-full m-1.5 sm:m-2 pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-md transition-hover duration-200 hover:shadow-hover'>
+		<div
+			className='max-w-[280px] flex flex-col basis-[calc(50%-18px)] sm:basis-full m-1.5 sm:m-2 pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-md transition-hover duration-200 hover:shadow-hover'
+			onClick={handleClick}>
 			<div className='text-center'>
 				<div className='relative self-stretch aspect-square'>
 					<Image
@@ -33,6 +41,6 @@ export default function Product({
 				<p>&#8364;{price}</p>
 			</div>
 			<Button textContent='Add to cart' />
-		</Link>
+		</div>
 	);
 }

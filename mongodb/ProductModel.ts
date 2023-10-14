@@ -8,6 +8,7 @@ const productSchema = new Schema({
 	images: [String],
 	main: Boolean,
 	landingPage: Boolean,
+	search: [String],
 });
 
 const Product = (models && models.Product) || model('Product', productSchema);

@@ -12,15 +12,16 @@ export default function ProductsList({
 	limit,
 }: {
 	products: ProductProps[];
-	limit: number;
+	limit?: number;
 }) {
 	// const [productsList, setProductsList] = useState(products);
 	const [productsList, setProductsList] = useState(products.slice(0, 8));
 	const [isThereMore, setIsThereMore] = useState(true);
 
 	const getMoreProducts = async () => {
-		const newLimit = productsList.length + limit;
-		const addedProducts = products.slice(productsList.length, newLimit);
+		const productsLimit = limit ? limit : 0;
+		const newProductsLimit = productsList.length + productsLimit;
+		const addedProducts = products.slice(productsList.length, newProductsLimit);
 		const data = productsList.concat(addedProducts);
 		// const data = await getProducts(newLimit);
 
@@ -36,7 +37,7 @@ export default function ProductsList({
 
 	return (
 		<InfiniteScroll
-			className='flex flex-wrap justify-center'
+			className='flex flex-wrap justify-center min-h-full'
 			dataLength={productsList.length}
 			next={getMoreProducts}
 			hasMore={isThereMore}

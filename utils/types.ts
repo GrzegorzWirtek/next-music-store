@@ -7,9 +7,13 @@ export interface Product {
 	title: string;
 	main?: boolean;
 	landingPage?: boolean;
+	search: string[];
 }
 
-export type SearchParameters = { landingPage: boolean } | { _id: string };
+export type SearchParameters =
+	| { landingPage: boolean }
+	| { _id: string }
+	| { search: string };
 
 export interface SearchParams {
 	searchParams: { v: string };

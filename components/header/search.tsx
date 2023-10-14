@@ -8,7 +8,6 @@ export default function Search() {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		console.log('input', inputValue);
 		router.push(`/search?v=${inputValue}`);
 		setInputValue('');
 	};

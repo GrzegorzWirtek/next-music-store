@@ -4,15 +4,12 @@ import { connectMongoDB } from '@/mongodb/MongoConnect';
 import Product from '@/mongodb/ProductModel';
 import { SearchParameters } from '@/utils/types';
 
-export default async function getProducts(
-	limit?: number,
-	search?: SearchParameters,
-) {
+export default async function getProducts(props?: SearchParameters) {
 	try {
 		await connectMongoDB();
-		const products = await Product.find(search ? search : {}).limit(
-			limit ? limit : 100,
-		);
+		const products = await Product.find(
+			props?.search ? props?.search : {},
+		).limit(props?.limit ? props?.limit : 0);
 		return JSON.parse(JSON.stringify(products));
 	} catch (error) {
 		console.log(error);

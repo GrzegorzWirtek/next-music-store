@@ -10,10 +10,13 @@ export interface Product {
 	search: string[];
 }
 
-export type SearchParameters =
-	| { landingPage: boolean }
-	| { _id: string }
-	| { search: string };
+export interface SearchParameters {
+	search?:
+		| { landingPage: boolean }
+		| { _id: string }
+		| { search: { $regex: RegExp; $options: string } };
+	limit?: number | null;
+}
 
 export interface SearchParams {
 	searchParams: { v: string };

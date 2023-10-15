@@ -7,7 +7,7 @@ export default async function Products() {
 	const products = await getProducts();
 
 	return (
-		<div className='mx-auto max-w-7xl'>
+		<div className='max-w-7xl'>
 			<h2
 				className={`${plaifairDisplay.className} text-center text-3xl mb-4 font-semibold`}>
 				All products

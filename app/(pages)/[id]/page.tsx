@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 
 export default async function ProductId({ params }: any) {
-	const product = await getProducts(1, { _id: params.id });
+	const product = await getProducts({ search: { _id: params.id } });
 	if (!product || !product.length) notFound();
 	const { title, price, descr, images } = product[0];
 

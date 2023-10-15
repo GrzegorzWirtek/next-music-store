@@ -7,9 +7,12 @@ import { SearchParams } from '@/utils/types';
 
 export default async function Search({ searchParams }: SearchParams) {
 	const searchValue = searchParams.v;
+	const searchValueRegex = {
+		search: { $regex: new RegExp(searchValue), $options: 'i' },
+	};
 
-	const products: ProductProps[] = await getProducts(10, {
-		search: searchValue,
+	const products: ProductProps[] = await getProducts({
+		search: searchValueRegex,
 	});
 
 	if (!products.length) return <NoResults value={searchValue} />;

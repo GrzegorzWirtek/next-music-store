@@ -7,7 +7,10 @@ import getBase64 from '@/utils/getBase64';
 import Link from 'next/link';
 
 export default async function LangindPage() {
-	const products = await getProducts(5, { landingPage: true });
+	const products = await getProducts({
+		search: { landingPage: true },
+		limit: 5,
+	});
 
 	const mainProductIndex = products.findIndex(
 		(product: ProductProps) => product.main === true,

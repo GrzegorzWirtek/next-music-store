@@ -15,7 +15,7 @@ export default function ProductsList({
 	limit?: number;
 }) {
 	// const [productsList, setProductsList] = useState(products);
-	const [productsList, setProductsList] = useState(products.slice(0, 8));
+	const [productsList, setProductsList] = useState(products.slice(0, limit));
 	const [isThereMore, setIsThereMore] = useState(true);
 
 	const getMoreProducts = async () => {

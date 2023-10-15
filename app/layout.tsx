@@ -19,7 +19,9 @@ export default function RootLayout({
 		<html lang='en'>
 			<body className={poppins.className} suppressHydrationWarning={true}>
 				<Header />
-				{children}
+				<main className='flex flex-col justify-center max-w-7xl m-auto min-h-[calc(100vh-7rem)] lg:min-h-[calc(100vh-5rem)]'>
+					{children}
+				</main>
 			</body>
 		</html>
 	);

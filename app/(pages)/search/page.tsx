@@ -7,11 +7,12 @@ import { SearchParams } from '@/utils/types';
 
 export default async function Search({ searchParams }: SearchParams) {
 	const searchValue = searchParams.v;
+
 	const products: ProductProps[] = await getProducts(10, {
 		search: searchValue,
 	});
 
-	if (!products.length) return <NoResults />;
+	if (!products.length) return <NoResults value={searchValue} />;
 
 	return (
 		<div className='flex flex-wrap justify-center min-h-full'>

@@ -5,7 +5,7 @@ const categories = ['string', 'brass', 'woodwind', 'percussion', 'keyboard'];
 
 export default function Categories() {
 	return (
-		<div className='min-h-[calc(100vh-7rem)] lg:min-h-[calc(100vh-5rem)] flex flex-row flex-wrap justify-center content-center gap-3'>
+		<div className='flex flex-row flex-wrap justify-center items-center gap-3'>
 			<h2
 				className={`${plaifairDisplay.className} basis-full text-center text-3xl mb-4 font-semibold`}>
 				Categories

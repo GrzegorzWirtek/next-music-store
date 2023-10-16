@@ -24,6 +24,7 @@
   --yellow: #faf8e0;
   --white-transparent: rgba(255, 255, 255, 0.733);
   --black-transparent: rgba(0, 0, 0, 0.127);
+  --black-transparent-darker: rgba(0, 0, 0, 0.294);
 
   /* text */
   --header-font-size: 70px;

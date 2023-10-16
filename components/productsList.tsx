@@ -2,7 +2,7 @@
 
 import { Product as ProductProps } from '@/utils/types';
 import Product from './product';
-import Spinner from './Spinner';
+import Spinner from './spinner';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useState } from 'react';
 import getProducts from '@/utils/getProducts';

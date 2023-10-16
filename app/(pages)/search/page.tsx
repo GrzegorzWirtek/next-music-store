@@ -6,9 +6,15 @@ import getProducts from '@/utils/getProducts';
 import { SearchParams } from '@/utils/types';
 
 export default async function Search({ searchParams }: SearchParams) {
-	const searchValue = searchParams.v;
+	const { search, category } = searchParams;
+	const searchValue = search ? search : category;
+
+	let searchKey = '';
+	for (const key in searchParams) {
+		searchKey = key;
+	}
 	const searchValueRegex = {
-		search: { $regex: new RegExp(searchValue), $options: 'i' },
+		[searchKey]: { $regex: new RegExp(searchValue), $options: 'i' },
 	};
 
 	const products: ProductProps[] = await getProducts({

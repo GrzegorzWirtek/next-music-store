@@ -14,10 +14,18 @@ export interface SearchParameters {
 	search?:
 		| { landingPage: boolean }
 		| { _id: string }
-		| { search: { $regex: RegExp; $options: string } };
+		| { [x: string]: { $regex: RegExp; $options: string } };
 	limit?: number | null;
 }
 
 export interface SearchParams {
-	searchParams: { v: string };
+	searchParams: { search: string; category: string };
+}
+
+export interface IdParams {
+	params: { id: string };
+}
+
+export interface Images {
+	images: { src: string; alt: string }[];
 }

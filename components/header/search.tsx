@@ -1,15 +1,17 @@
 'use client';
 import search from '@/public/search.svg';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 export default function Search() {
 	const [inputValue, setInputValue] = useState('');
 	const router = useRouter();
+	const inputRef = useRef<HTMLInputElement | null>(null);
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		inputRef?.current?.blur();
 		router.push(`/search?search=${inputValue}`);
 		setInputValue('');
 	};
@@ -17,6 +19,7 @@ export default function Search() {
 	return (
 		<form className='relative max-w-[60%] z-2' onSubmit={handleSubmit}>
 			<input
+				ref={inputRef}
 				type='text'
 				className='w-full pl-4 border-inherit rounded-md outline-none transition-focus duration-100 focus:drop-shadow-hover text-xl lg:text-base'
 				placeholder='Search'

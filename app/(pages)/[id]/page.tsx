@@ -15,12 +15,14 @@ export default async function ProductId({ params }: IdParams) {
 	}));
 
 	return (
-		<div>
-			<p>{title}</p>
-			<p>{price}</p>
-			<p>{descr}</p>
-			<div className='relative max-w-[300px] aspect-square'>
+		<div className='flex flex-wrap lg:flex-nowrap justify-center lg:px-10'>
+			<div className='basis-full lg:basis-auto text-center'>
 				<Slider images={imagesArr} />
+			</div>
+			<div className='px-10'>
+				<p>{title}</p>
+				<p>{price}</p>
+				<p>{descr}</p>
 			</div>
 		</div>
 	);

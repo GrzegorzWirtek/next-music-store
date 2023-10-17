@@ -6,8 +6,7 @@ interface Props {
 export default function ham({ mobileNavActive, toggleMobileNav }: Props) {
 	return (
 		<div
-			id='ham'
-			className='relative flex lg:hidden w-8 h-5 p-2 box-content flex-col justify-between cursor-pointer group z-10'
+			className='relative flex lg:hidden w-8 h-5 p-2 box-content flex-col justify-between cursor-pointer group z-20'
 			onClick={toggleMobileNav}>
 			<div
 				className={`h-0.5 w-full rounded-3xl bg-white transition-transform ${

@@ -11,6 +11,9 @@
 :root {
   /* dimensions */
   --min-app-width: 300px;
+  --slider-mobile-size: 90vw;
+  --slider-desktop-size: 35vw;
+  --slider-max-size: 500px;
 
   /* colors */
   --main-color: #886438;
@@ -55,7 +58,7 @@ body {
   overflow-y: scroll;
 }
 
-.body-blur>*:not(#yo) {
+.body-blur>*:not(#nav) {
   filter: blur(4px);
 }
 

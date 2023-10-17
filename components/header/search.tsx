@@ -15,7 +15,7 @@ export default function Search() {
 	};
 
 	return (
-		<form className='relative max-w-[60%]' onSubmit={handleSubmit}>
+		<form className='relative max-w-[60%] z-2' onSubmit={handleSubmit}>
 			<input
 				type='text'
 				className='w-full pl-4 border-inherit rounded-md outline-none transition-focus duration-100 focus:drop-shadow-hover text-xl lg:text-base'

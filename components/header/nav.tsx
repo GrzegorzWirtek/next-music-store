@@ -33,7 +33,7 @@ export default function Nav() {
 		<nav className='lg:grow max-w-[20%] lg:max-w-full' onClick={closeMobileNav}>
 			<Ham mobileNavActive={mobileNavActive} toggleMobileNav={openMobileNav} />
 			<ul
-				className={`fixed lg:static -left-full top-0 w-full min-h-[50vh] lg:min-h-min pb-10 pt-10 lg:p-0 lg:h-auto lg:-translate-x-0 lg:transition-none transition-transform lg:duration-0 lg:w-auto flex flex-col items-center justify-center lg:justify-start lg:flex-row lg:flex-wrap gap-4 bg-[var(--red)] blur-none ${
+				className={`fixed lg:static -left-full top-0 w-full min-h-[50vh] lg:min-h-min pb-10 pt-10 lg:p-0 lg:h-auto lg:-translate-x-0 lg:transition-none transition-transform lg:duration-0 lg:w-auto flex flex-col items-center justify-center lg:justify-start lg:flex-row lg:flex-wrap gap-4 bg-[var(--red)] blur-none z-10 ${
 					mobileNavActive && 'translate-x-full'
 				}`}>
 				{mobileNavActive && (

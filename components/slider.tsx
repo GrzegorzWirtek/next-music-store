@@ -4,10 +4,7 @@ import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import left from '@/public/arrow-left.svg';
 import right from '@/public/arrow-right.svg';
-
-interface Images {
-	images: { src: string; alt: string }[];
-}
+import { Images } from '@/utils/types';
 
 export default function Slider({ images }: Images) {
 	const minimumPxShiftToChangeSlide = 80;
@@ -110,6 +107,8 @@ export default function Slider({ images }: Images) {
 
 	const handleTouchEnd = useCallback(
 		(e: TouchEvent) => {
+			const target = e.target as HTMLMediaElement;
+			if (target.parentElement?.id !== 'imgwrapper') return;
 			e.preventDefault();
 			isClicked.current = false;
 			changeSlide(moveDirection.current);
@@ -152,45 +151,51 @@ export default function Slider({ images }: Images) {
 	]);
 
 	return (
-		<div className='relative my-0 mx-auto p-0 border-[1px] border-solid border-gray-400 box-border select-none overflow-hidden landscape:w-[35vw] landscape:h-[35vw] portrait:w-[90vw] portrait:h-[90vw] '>
-			<div ref={wrapperRef} className='flex h-full translate-x-0'>
-				{images.map((img) => (
-					<div
-						key={img.src}
-						className='relative shrink-0 w-[90vw] h-[90vw] landscape:w-[35vw] landscape:h-[35vw] '>
-						<Image
-							src={img.src}
-							alt={img.alt}
-							priority
-							fill
-							data-img='img'
-							className='object-contain w-full h-full'
-						/>
-					</div>
-				))}
+		<div className='relative lg:landscape:px-10 pb-8 inline-block'>
+			<div className='relative p-0 select-none overflow-hidden lg:landscape:w-[var(--slider-desktop-size)] max-w-[var(--slider-max-size)] max-h-[var(--slider-max-size)] lg:landscape:h-[var(--slider-desktop-size)] portrait:w-[var(--slider-mobile-size)] portrait:h-[var(--slider-mobile-size)]'>
+				<div ref={wrapperRef} className='flex h-full translate-x-0'>
+					{images.map((img) => (
+						<div
+							key={img.src}
+							id='imgwrapper'
+							className='relative shrink-0 w-[var(--slider-mobile-size)] h-[var(--slider-mobile-size)] lg:landscape:w-[var(--slider-desktop-size)] max-w-[var(--slider-max-size)] max-h-[var(--slider-max-size)] lg:landscape:h-[var(--slider-desktop-size)]'>
+							<Image
+								src={img.src}
+								alt={img.alt}
+								priority
+								fill
+								data-img='img'
+								className='object-contain w-full h-full'
+							/>
+						</div>
+					))}
+				</div>
 			</div>
-			{currentSlide && (
+			{currentSlide ? (
 				<button
 					onClick={() => changeSlide('right')}
 					onTouchEnd={() => changeSlide('right')}
-					className='absolute top-1/2 left-[5px] -translate-y-1/2 outline-none rounded-md w-9 h-10 bg-[var(--black-transparent)] cursor-pointer transition-colors z-20 hover:bg-[var(--black-transparent-darker)]'>
+					className='absolute top-1/2 left-0 -translate-y-1/2 outline-none rounded-md w-9 h-10 p-1 bg-[var(--black-transparent)] cursor-pointer transition-colors z-20 hover:bg-[var(--black-transparent-darker)] hidden lg:landscape:block'>
 					<Image src={left} alt={'left'} data-button='nav' />
 				</button>
-			)}
+			) : null}
 			{currentSlide < images.length - 1 && (
 				<button
 					onClick={() => changeSlide('left')}
 					onTouchEnd={() => changeSlide('left')}
-					className='absolute top-1/2 right-[5px] -translate-y-1/2 outline-none rounded-md w-9 h-10 bg-[var(--black-transparent)] cursor-pointer transition-colors z-20 hover:bg-[var(--black-transparent-darker)]'>
+					className='absolute top-1/2 right-0 -translate-y-1/2 outline-none rounded-md w-9 h-10 p-1 bg-[var(--black-transparent)] cursor-pointer transition-colors z-20 hover:bg-[var(--black-transparent-darker)] hidden lg:landscape:block'>
 					<Image src={right} alt={'right'} data-button='nav' />
 				</button>
 			)}
-			<div className='absolute flex flex-wrap justify-center items-center box-border left-0 bottom-[4%] w-full'>
+			<div
+				className={`absolute flex flex-wrap justify-center items-center box-border left-0 bottom-0 w-full ${
+					images.length < 2 ? 'hidden' : ''
+				}`}>
 				{images.map((_, index) => (
 					<div
 						key={index}
-						className={`${'w-1.5 h-1.5 border-2 border-black rounded-full m-0.5 box-content'} ${
-							index === currentSlide && 'border-[5px]'
+						className={`${'w-1 h-1 border-2 border-black rounded-full m-0.5 box-content'} ${
+							index === currentSlide && 'border-[4px]'
 						}`}></div>
 				))}
 			</div>

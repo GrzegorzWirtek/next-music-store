@@ -25,7 +25,7 @@ export default function Product({
 
 	return (
 		<div
-			className='max-w-[280px] flex flex-col basis-[calc(50%-18px)] sm:basis-full m-1.5 sm:m-2 pb-10 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-md transition-hover duration-200 hover:shadow-hover'
+			className='max-w-[280px] flex flex-col basis-[calc(50%-18px)] sm:basis-full m-1.5 sm:m-2 pb-6 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-md transition-hover duration-200 hover:shadow-hover'
 			onClick={handleClick}>
 			<div className='text-center'>
 				<div className='relative self-stretch aspect-square'>
@@ -37,10 +37,10 @@ export default function Product({
 						priority
 					/>
 				</div>
-				<h2>{title}</h2>
-				<p>&#8364;{price}</p>
+				<h2 className='font-semibold text-xl mt-3'>{title}</h2>
+				<p className='font-semibold mb-6 text-[var(--blue)]'>&#8364;{price}</p>
 			</div>
-			<Button textContent='Add to cart' />
+			<Button textContent='Add to cart' style='self-center px-6' />
 		</div>
 	);
 }

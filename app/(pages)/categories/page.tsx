@@ -8,7 +8,7 @@ export default function Categories() {
 	return (
 		<div className='flex flex-row flex-wrap justify-center items-center gap-3'>
 			<h2
-				className={`${plaifairDisplay.className} basis-full text-center text-3xl mb-4 font-semibold`}>
+				className={`${plaifairDisplay.className} basis-full text-center text-4xl mb-6 font-semibold`}>
 				Categories
 			</h2>
 			{categories.map((category) => (

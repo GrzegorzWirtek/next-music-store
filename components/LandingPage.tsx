@@ -47,10 +47,10 @@ export default async function LangindPage() {
 					/>
 				</div>
 				<div className='basis-auto smr-3 grid grid-cols-2 grid-rows-2'>
-					<h2 className='row-start-1 row-end-2 text-center'>
+					<h2 className='row-start-1 row-end-2 text-center font-semibold'>
 						{mainProduct.title}
 					</h2>
-					<p className='row-start-2 row-end-3 text-center'>
+					<p className='row-start-2 row-end-3 text-center font-semibold'>
 						&#8364;{mainProduct.price}
 					</p>
 					<Link

@@ -22,9 +22,9 @@ export default async function ProductId({ params }: IdParams) {
 			</div>
 			<div className='flex flex-col flex-wrap w-full px-4 lg:px-10 lg:ml-5'>
 				<h1 className='font-semibold text-4xl'>{title}</h1>
-				<h2 className='mb-4 opacity-40 font-semibold'>{category}</h2>
+				<h2 className='mb-4 opacity-50 font-semibold'>{category}</h2>
 				<p className='mb-4'>{descr}</p>
-				<p className='font-semibold text-lg mb-8 lg:mb-4 text-[var(--blue)]'>
+				<p className='font-semibold text-lg mb-8 lg:mb-4 text-[var(--red-price)]'>
 					&#8364;{price}
 				</p>
 				<Button

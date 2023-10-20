@@ -38,7 +38,9 @@ export default function Product({
 					/>
 				</div>
 				<h2 className='font-semibold text-xl mt-3'>{title}</h2>
-				<p className='font-semibold mb-6 text-[var(--blue)]'>&#8364;{price}</p>
+				<p className='font-semibold mb-6 text-[var(--red-price)]'>
+					&#8364;{price}
+				</p>
 			</div>
 			<Button textContent='Add to cart' style='self-center px-6' />
 		</div>

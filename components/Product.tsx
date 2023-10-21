@@ -1,10 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import Button from './button';
 import { Product } from '@/utils/types';
 import { useRouter } from 'next/navigation';
 import { SyntheticEvent } from 'react';
+import { useGlobalContext } from '@/app/context/store';
 
 export default function Product({
 	product,
@@ -16,17 +16,25 @@ export default function Product({
 	const { title, price, images, _id } = product;
 	const img = `${baseImgUrl}${images[0]}`;
 	const router = useRouter();
+	const { products, setProducts } = useGlobalContext();
 
-	const handleClick = (e: SyntheticEvent) => {
+	const handleShowDetails = (e: SyntheticEvent) => {
 		const target = e.target as HTMLElement;
 		if (target.id === 'button') return;
 		router.push(`/${_id}`);
 	};
 
+	const handleAddToCart = () => {
+		setProducts([
+			...products,
+			{ id: _id, title, price, number: 1, imgUrl: images[0] },
+		]);
+	};
+
 	return (
 		<div
 			className='max-w-[280px] flex flex-col basis-[calc(50%-18px)] sm:basis-full m-1.5 sm:m-2 pb-6 bg-gradient-to-b from-[var(--white-transparent)] to-transparent rounded-md transition-hover duration-200 hover:shadow-hover'
-			onClick={handleClick}>
+			onClick={handleShowDetails}>
 			<div className='text-center'>
 				<div className='relative self-stretch aspect-square'>
 					<Image
@@ -42,7 +50,13 @@ export default function Product({
 					&#8364;{price}
 				</p>
 			</div>
-			<Button textContent='Add to cart' style='self-center px-6' />
+
+			<button
+				id='button'
+				className='self-center px-6 mt-auto bg-[var(--red)] transition-hover duration-200 hover:bg-[var(--red-lighter)] text-white py-2 rounded-md'
+				onClick={handleAddToCart}>
+				Add to cart
+			</button>
 		</div>
 	);
 }

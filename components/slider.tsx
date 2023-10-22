@@ -175,7 +175,7 @@ export default function Slider({ images }: Images) {
 				<button
 					onClick={() => changeSlide('right')}
 					onTouchEnd={() => changeSlide('right')}
-					className='absolute top-1/2 left-0 -translate-y-1/2 outline-none rounded-md w-9 h-10 p-1 bg-[var(--black-transparent)] cursor-pointer transition-colors z-20 hover:bg-[var(--black-transparent-darker)] hidden lg:landscape:block'>
+					className='absolute top-1/2 left-0 -translate-y-1/2 outline-none rounded-md w-9 h-10 p-1 bg-[var(--black-transparent)] cursor-pointer transition-colors hover:bg-[var(--black-transparent-darker)] hidden lg:landscape:block'>
 					<Image src={left} alt={'left'} data-button='nav' />
 				</button>
 			) : null}
@@ -183,7 +183,7 @@ export default function Slider({ images }: Images) {
 				<button
 					onClick={() => changeSlide('left')}
 					onTouchEnd={() => changeSlide('left')}
-					className='absolute top-1/2 right-0 -translate-y-1/2 outline-none rounded-md w-9 h-10 p-1 bg-[var(--black-transparent)] cursor-pointer transition-colors z-20 hover:bg-[var(--black-transparent-darker)] hidden lg:landscape:block'>
+					className='absolute top-1/2 right-0  outline-none rounded-md w-9 h-10 p-1 bg-[var(--black-transparent)] cursor-pointer transition-colors hover:bg-[var(--black-transparent-darker)] hidden lg:landscape:block'>
 					<Image src={right} alt={'right'} data-button='nav' />
 				</button>
 			)}

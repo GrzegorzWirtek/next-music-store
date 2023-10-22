@@ -7,7 +7,7 @@ export interface Product {
 	title: string;
 	main?: boolean;
 	landingPage?: boolean;
-	search: string[];
+	search?: string[];
 }
 
 export interface SearchParameters {
@@ -29,7 +29,3 @@ export interface IdParams {
 export interface Images {
 	images: { src: string; alt: string }[];
 }
-
-export type ModalProps = {
-	handleClose: () => void;
-};

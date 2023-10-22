@@ -2,11 +2,10 @@ import getProducts from '@/utils/getProducts';
 import { notFound } from 'next/navigation';
 import { IdParams } from '@/utils/types';
 import Slider from '@/components/slider';
-// import { useAppContext } from '@/app/context/AppContext';
+import AddToCartBtn from '@/components/addToCardBtn';
 
 export default async function ProductId({ params }: IdParams) {
 	const product = await getProducts({ search: { _id: params.id } });
-	// const { addToCart } = useAppContext();
 
 	if (!product || !product.length) notFound();
 	const { title, category, price, descr, images } = product[0];
@@ -29,9 +28,7 @@ export default async function ProductId({ params }: IdParams) {
 					&#8364;{price}
 				</p>
 
-				<button className='self-center px-8 lg:self-auto mt-auto bg-[var(--red)] transition-hover duration-200 hover:bg-[var(--red-lighter)] text-white py-2 rounded-md'>
-					Add to card
-				</button>
+				<AddToCartBtn product={product[0]} style='lg:self-auto' />
 			</div>
 		</div>
 	);

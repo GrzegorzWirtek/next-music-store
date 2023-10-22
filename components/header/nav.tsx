@@ -2,7 +2,10 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import disablingScroll from '@/utils/disablingScroll';
+import disableScroll from '@/utils/disableScroll';
+import enableScroll from '@/utils/enableScroll';
+import addBodyBlur from '@/utils/addBodyBlur';
+import removeBodyBlur from '@/utils/removeBodyBlur';
 import Ham from './ham';
 import Logo from './logo';
 
@@ -22,8 +25,17 @@ export default function Nav() {
 
 	useEffect(() => {
 		const media = window.matchMedia(`(min-width: ${MIN_WIDHT_DESKTOP}px)`);
-		disablingScroll(mobileNavActive);
-		if (mobileNavActive === false) return;
+		// mobileNavActive ? disableScroll() : enableScroll();
+		if (mobileNavActive) {
+			disableScroll();
+			addBodyBlur();
+		} else {
+			enableScroll();
+			removeBodyBlur();
+			return;
+		}
+
+		// if (mobileNavActive === false) return;
 		const listener = () => setMobileNavActive(!media.matches);
 		window.addEventListener('resize', listener);
 		return () => window.removeEventListener('resize', listener);

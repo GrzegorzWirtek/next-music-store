@@ -29,3 +29,7 @@ export interface IdParams {
 export interface Images {
 	images: { src: string; alt: string }[];
 }
+
+export type ModalProps = {
+	handleClose: () => void;
+};

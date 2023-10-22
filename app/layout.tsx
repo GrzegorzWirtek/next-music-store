@@ -2,7 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Header from '../components/header';
 import { Poppins } from 'next/font/google';
-import { GlobalContextProvider } from './context/store';
+import { AppContextProvider } from './context/AppContext';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400'] });
 
@@ -19,12 +19,12 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={poppins.className} suppressHydrationWarning={true}>
-				<GlobalContextProvider>
+				<AppContextProvider>
 					<Header />
 					<main className='flex flex-col justify-center max-w-7xl m-auto min-h-[calc(100vh-7rem)] lg:min-h-[calc(100vh-5rem)]'>
 						{children}
 					</main>
-				</GlobalContextProvider>
+				</AppContextProvider>
 			</body>
 		</html>
 	);

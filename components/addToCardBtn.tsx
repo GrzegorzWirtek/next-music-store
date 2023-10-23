@@ -10,7 +10,8 @@ export default function AddToCartBtn({
 	product: Product;
 	style?: string;
 }) {
-	const { products, addToCart, activateModal } = useAppContext();
+	const { products, addToCart, activateModal, setModalContent } =
+		useAppContext();
 
 	const { _id, title, price, images } = product;
 
@@ -22,11 +23,28 @@ export default function AddToCartBtn({
 			number: 1,
 			imgUrl: images[0],
 		};
+
 		const isAlreadyAdded = products.find(
 			(product) => product.id === productToAdd.id,
 		);
-		if (isAlreadyAdded) return activateModal();
-		addToCart(productToAdd);
+
+		if (!isAlreadyAdded) {
+			setModalContent({
+				text: 'Added to cart',
+				title,
+				price,
+				imgUrl: images[0],
+			});
+			addToCart(productToAdd);
+		} else {
+			setModalContent({
+				text: 'This product has already been added',
+				title,
+				price,
+				imgUrl: images[0],
+			});
+		}
+		activateModal();
 	};
 
 	return (

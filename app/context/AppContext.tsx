@@ -1,7 +1,7 @@
 'use client';
 import { createContext, useContext, useState } from 'react';
 import useLocalStorage from '@/hooks/useLocalStorage';
-import { initialState, ContextProps, CartItem } from './types';
+import { initialState, ContextProps, CartItem, ModalContent } from './types';
 
 const AppContext = createContext<ContextProps>(initialState);
 
@@ -10,6 +10,7 @@ export const AppContextProvider = ({
 }: React.PropsWithChildren<{}>) => {
 	const [value, setValue] = useLocalStorage('cart', []);
 	const [isModalActive, setIsModalActive] = useState(false);
+	const [modalContent, setModalContent] = useState({} as ModalContent);
 
 	const addToCart = (item: CartItem) => {
 		setValue([...value, item]);
@@ -52,6 +53,8 @@ export const AppContextProvider = ({
 				isModalActive,
 				activateModal,
 				deactivateModal,
+				modalContent,
+				setModalContent,
 				addToCart,
 				deleteById,
 				increaseNr,

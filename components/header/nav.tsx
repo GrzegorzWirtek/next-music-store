@@ -8,7 +8,7 @@ import addBodyBlur from '@/utils/addBodyBlur';
 import removeBodyBlur from '@/utils/removeBodyBlur';
 import Ham from './ham';
 import Logo from './logo';
-import Modal from '@/components/modal';
+import Modal from './modal';
 import { useAppContext } from '@/app/context/AppContext';
 
 export default function Nav() {

@@ -26,11 +26,11 @@ export default function Cart() {
 					alt='Shopping cart'
 					src={cart}
 				/>
-				{isClient && (
+				{isClient && productsInCart > 0 ? (
 					<p className='absolute -top-1 right-0 flex justify-center items-center bg-[var(--blue)] text-white w-4 h-4 text-xs rounded-full p-0.5 box-content transition-hover duration-200 md:group-hover:drop-shadow-hover'>
 						{productsInCart}
 					</p>
-				)}
+				) : null}
 			</Link>
 		</>
 	);

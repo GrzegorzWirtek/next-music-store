@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export type CartItem = {
 	id: string;
 	title: string;
@@ -6,11 +8,20 @@ export type CartItem = {
 	imgUrl: string;
 };
 
+export type ModalContent = {
+	text: string;
+	title: string;
+	price: number;
+	imgUrl: string;
+};
+
 export interface ContextProps {
 	products: CartItem[];
 	isModalActive: boolean;
 	activateModal: () => void;
 	deactivateModal: () => void;
+	modalContent: ModalContent;
+	setModalContent: Dispatch<SetStateAction<ModalContent>>;
 	addToCart: (item: CartItem) => void;
 	deleteById: (id: string) => void;
 	increaseNr: (id: string) => void;
@@ -22,6 +33,8 @@ export const initialState = {
 	isModalActive: false,
 	activateModal: () => {},
 	deactivateModal: () => {},
+	modalContent: {} as ModalContent,
+	setModalContent: () => {},
 	addToCart: () => {},
 	deleteById: () => {},
 	increaseNr: () => {},

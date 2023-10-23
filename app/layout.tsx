@@ -4,7 +4,7 @@ import Header from '../components/header';
 import { Poppins } from 'next/font/google';
 import { AppContextProvider } from './context/AppContext';
 
-const poppins = Poppins({ subsets: ['latin'], weight: ['400'] });
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600'] });
 
 export const metadata: Metadata = {
 	title: 'Next Music Store',

@@ -29,11 +29,11 @@ export default function Modal() {
 					{text}
 				</h2>
 				<Image
-					className='col-start-1 col-end-2 row-start-2 row-end-5 mb-6'
+					className='col-start-1 col-end-2 row-start-2 row-end-5 mb-6 rounded-md'
 					src={`${process.env.NEXT_PUBLIC_UPLOADTHING_BASE_URL}${imgUrl}`}
 					alt={'Product added to cart'}
-					width={120}
-					height={120}
+					width={96}
+					height={96}
 					priority
 				/>
 				<h3 className='self-start col-start-2 col-end-3 font-medium'>

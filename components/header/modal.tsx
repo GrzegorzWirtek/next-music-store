@@ -25,7 +25,7 @@ export default function Modal() {
 			<div
 				className='relative grid grid-cols-2 w-full max-w-[400px] p-10 mx-4 bg-white z-20 rounded-md'
 				onClick={handleCloseModal}>
-				<h2 className='col-start-1 col-end-3 mb-6 pb-4 border-b-[1px] text-center text-xl font-medium'>
+				<h2 className='col-start-1 col-end-3 mb-6 pb-4 border-b-[1px] border-neutral-300 text-center text-xl font-medium'>
 					{text}
 				</h2>
 				<Image

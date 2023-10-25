@@ -16,7 +16,7 @@ export default async function ProductId({ params }: IdParams) {
 	}));
 
 	return (
-		<div className='flex flex-wrap lg:flex-nowrap justify-center lg:px-10'>
+		<div className='flex flex-wrap lg:flex-nowrap justify-center lg:px-10 pb-10'>
 			<div className='basis-full lg:basis-auto text-center'>
 				<Slider images={imagesArr} />
 			</div>

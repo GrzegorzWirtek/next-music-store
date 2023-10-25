@@ -1,11 +1,10 @@
 'use client';
 
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useAppContext } from '@/app/context/AppContext';
-import add from '@/public/add.svg';
-import remove from '@/public/remove.svg';
-import deleteImg from '@/public/delete.svg';
+import { plaifairDisplay } from '@/utils/fonts';
+import CartIsEmpty from './cartIsEmpty';
+import CartContent from './cartContent';
 
 export default function Cart() {
 	const { products, deleteById, increaseNr, decreaseNr } = useAppContext();
@@ -15,44 +14,29 @@ export default function Cart() {
 		setIsClient(true);
 	}, []);
 
+	if (!isClient) return;
+	if (!products.length) return <CartIsEmpty />;
+
 	return (
-		<div className='flex flex-col justify-center items-center'>
-			{products.length ? <p>Your Cart</p> : <p>Cart is empty</p>}
-			{isClient &&
-				products?.map((product) => (
-					<div
-						className='grid grid-cols-2 grid-rows-[auto_1fr_auto] w-[90vw] max-w-[400px] mx-auto p-10 bg-white rounded-md border-b'
-						key={product.id}>
-						<div className='relative col-start-1 col-end-2 row-start-1 row-end-3 h-28 w-28'>
-							<Image
-								className='object-contain'
-								src={`${process.env.NEXT_PUBLIC_UPLOADTHING_BASE_URL}${product.imgUrl}`}
-								alt={product.title}
-								fill
-							/>
-						</div>
-						<h2 className='col-start-2 col-end-3 self-start font-medium'>
-							{product.title}
-						</h2>
-						<p className='col-start-2 col-end-3 text-[var(--red-price)] font-medium'>
-							&#8364;{product.price}
-						</p>
-						<div className='flex items-center col-start-1 col-end-3 mt-8 pt-4 border-t'>
-							<button className='p-2' onClick={() => increaseNr(product.id)}>
-								<Image src={add} alt='Add' />
-							</button>
-							<p className='text-xl w-10 text-center'>{product.number}</p>
-							<button className='p-2' onClick={() => decreaseNr(product.id)}>
-								<Image src={remove} alt='Remove' />
-							</button>
-							<button
-								className='p-2 ml-auto'
-								onClick={() => deleteById(product.id)}>
-								<Image src={deleteImg} alt='Delete' />
-							</button>
-						</div>
-					</div>
-				))}
+		<div className='flex flex-col bg-[var(--black-transparent)] w-[95vw] max-w-[400px] mx-auto py-4 px-2 rounded-md shadow-md'>
+			<p
+				className={`${plaifairDisplay.className} text-3xl mb-4 font-semibold text-center`}>
+				Your cart
+			</p>
+			<CartContent />
+			<div className='flex flex-wrap justify-between p-4 bg-white rounded-md'>
+				<p className='text-xl font-semibold'>Total</p>
+				<p className='text-xl font-semibold text-[var(--red-price)]'>
+					&#8364;
+					{products.reduce(
+						(acc, product) => acc + product.price * product.number,
+						0,
+					)}
+				</p>
+			</div>
+			<button className='px-8 mt-4 bg-[var(--blue)] transition-hover duration-200 hover:bg-[var(--blue-lighter)] text-white py-2 rounded-md'>
+				BUY NOW
+			</button>
 		</div>
 	);
 }

@@ -20,7 +20,7 @@ export default function Product({
 	const handleShowDetails = (e: SyntheticEvent) => {
 		const target = e.target as HTMLElement;
 		if (target.id === 'button') return;
-		router.push(`/${_id}`);
+		router.push(`/products/${_id}`);
 	};
 
 	return (

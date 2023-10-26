@@ -54,7 +54,7 @@ export default async function LangindPage() {
 						&#8364;{mainProduct.price}
 					</p>
 					<Link
-						href={`/${mainProduct._id}`}
+						href={`/products/${mainProduct._id}`}
 						className='bg-[var(--red)] transition-hover duration-200 hover:bg-[var(--red-lighter)] text-white py-2 px-4 rounded-lg row-start-1 row-end-3 self-center'>
 						Details
 					</Link>

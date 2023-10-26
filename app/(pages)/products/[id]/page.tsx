@@ -6,15 +6,12 @@ import AddToCartBtn from '@/components/addToCardBtn';
 
 export default async function ProductId({ params }: IdParams) {
 	const product = await getProducts({ search: { _id: params.id } });
-
 	if (!product || !product.length) notFound();
 	const { title, category, price, descr, images } = product[0];
-
 	const imagesArr = images.map((image: string, index: number) => ({
 		src: `${process.env.NEXT_PUBLIC_UPLOADTHING_BASE_URL}${image}`,
 		alt: `${title} ${index + 1}`,
 	}));
-
 	return (
 		<div className='flex flex-wrap lg:flex-nowrap justify-center lg:px-10 pb-10'>
 			<div className='basis-full lg:basis-auto text-center'>
@@ -27,7 +24,6 @@ export default async function ProductId({ params }: IdParams) {
 				<p className='font-semibold text-lg mb-8 lg:mb-4 text-[var(--red-price)]'>
 					&#8364;{price}
 				</p>
-
 				<AddToCartBtn product={product[0]} style='lg:self-auto' />
 			</div>
 		</div>

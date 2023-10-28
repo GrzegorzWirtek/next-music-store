@@ -3,14 +3,11 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
 
 export async function GET(req: NextApiRequest, res: NextApiResponse) {
-	res.statusCode = 200;
+	const stripeObj = await stripe.checkout.sessions.create({
+		success_url: 'https://localhost:3000',
+		line_items: [{ price: 'price_1O69IJDZHLfRukhz4Cq4lLuo', quantity: 2 }],
+		mode: 'payment',
+	});
 
-	// const stripeObj = await stripe.checkout.sessions.create({
-	// 	success_url: 'https://example.com/success',
-	// 	line_items: [{ price: 12, quantity: 2 }],
-	// 	mode: 'payment',
-	// });
-	// console.log('HERE IS STRIPE OBJ', stripeObj);
-
-	return NextResponse.json({ hi: 'helo' });
+	return NextResponse.json(stripeObj);
 }

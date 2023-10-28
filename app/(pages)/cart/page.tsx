@@ -5,10 +5,21 @@ import { useAppContext } from '@/app/context/AppContext';
 import { plaifairDisplay } from '@/utils/fonts';
 import CartIsEmpty from './cartIsEmpty';
 import CartContent from './cartContent';
+import { useRouter } from 'next/navigation';
 
 export default function Cart() {
 	const { products, deleteById, increaseNr, decreaseNr } = useAppContext();
 	const [isClient, setIsClient] = useState(false);
+	const router = useRouter();
+
+	const handleOrder = async () => {
+		const productsToOrder = products.map((product) => {
+			return { id: product.id, number: product.number };
+		});
+		const response = await fetch(`/api/order`);
+		const data = await response.json();
+		router.push(data.url);
+	};
 
 	useEffect(() => {
 		setIsClient(true);
@@ -34,7 +45,9 @@ export default function Cart() {
 					)}
 				</p>
 			</div>
-			<button className='px-8 mt-4 bg-[var(--blue)] transition-hover duration-200 hover:bg-[var(--blue-lighter)] text-white py-2 rounded-md'>
+			<button
+				onClick={handleOrder}
+				className='px-8 mt-4 bg-[var(--blue)] transition-hover duration-200 hover:bg-[var(--blue-lighter)] text-white py-2 rounded-md'>
 				BUY NOW
 			</button>
 		</div>

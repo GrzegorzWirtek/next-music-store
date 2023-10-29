@@ -13,12 +13,23 @@ export default function Cart() {
 	const router = useRouter();
 
 	const handleOrder = async () => {
-		const productsToOrder = products.map((product) => {
-			return { id: product.id, number: product.number };
+		const textProducts = [
+			{ price: 'price_1O6cNHDZHLfRukhzxNfiUQY4', quantity: 1 },
+			{ price: 'price_1O6dKPDZHLfRukhz6ZKj8idq', quantity: 2 },
+		];
+
+		const response = await fetch(`/api/order`, {
+			method: 'POST',
+			mode: 'cors',
+			cache: 'no-cache',
+			credentials: 'same-origin',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(textProducts),
 		});
-		const response = await fetch(`/api/order`);
 		const data = await response.json();
-		router.push(data.url);
+		router.push(data);
 	};
 
 	useEffect(() => {

@@ -10,7 +10,7 @@ export default function Cart() {
 	const [isClient, setIsClient] = useState(false);
 	const { products } = useAppContext();
 	const productsInCart = products?.reduce(
-		(acc, product) => acc + product.number,
+		(acc, product) => acc + product.quantity,
 		0,
 	);
 

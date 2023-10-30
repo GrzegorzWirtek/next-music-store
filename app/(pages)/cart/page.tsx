@@ -13,10 +13,9 @@ export default function Cart() {
 	const router = useRouter();
 
 	const handleOrder = async () => {
-		const textProducts = [
-			{ price: 'price_1O6cNHDZHLfRukhzxNfiUQY4', quantity: 1 },
-			{ price: 'price_1O6dKPDZHLfRukhz6ZKj8idq', quantity: 2 },
-		];
+		const stripeProducts = products.map((product) => {
+			return { price: product.priceStripe, quantity: product.quantity };
+		});
 
 		const response = await fetch(`/api/order`, {
 			method: 'POST',
@@ -26,7 +25,7 @@ export default function Cart() {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(textProducts),
+			body: JSON.stringify(stripeProducts),
 		});
 		const data = await response.json();
 		router.push(data);
@@ -51,7 +50,7 @@ export default function Cart() {
 				<p className='text-xl font-semibold text-[var(--red-price)]'>
 					&#8364;
 					{products.reduce(
-						(acc, product) => acc + product.price * product.number,
+						(acc, product) => acc + product.price * product.quantity,
 						0,
 					)}
 				</p>

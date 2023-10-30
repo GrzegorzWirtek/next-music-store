@@ -1,7 +1,12 @@
 'use client';
 import { createContext, useContext, useState } from 'react';
 import useLocalStorage from '@/hooks/useLocalStorage';
-import { initialState, ContextProps, CartItem, ModalContent } from './types';
+import {
+	initialState,
+	ContextProps,
+	CartItem,
+	ModalContent,
+} from '@/utils/types';
 
 const AppContext = createContext<ContextProps>(initialState);
 
@@ -23,10 +28,10 @@ export const AppContextProvider = ({
 	const matchOperation = (id: string, operator: number) => {
 		const index = value.findIndex((product: CartItem) => product.id === id);
 		const productsCopy = [...value];
-		const newNumber = productsCopy[index].number + operator;
-		if (newNumber <= 0) return;
+		const newQuantity = productsCopy[index].quantity + operator;
+		if (newQuantity <= 0) return;
 
-		productsCopy[index] = { ...productsCopy[index], number: newNumber };
+		productsCopy[index] = { ...productsCopy[index], quantity: newQuantity };
 		setValue(productsCopy);
 	};
 

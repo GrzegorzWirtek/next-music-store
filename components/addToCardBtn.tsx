@@ -13,14 +13,15 @@ export default function AddToCartBtn({
 	const { products, addToCart, activateModal, setModalContent } =
 		useAppContext();
 
-	const { _id, title, price, images } = product;
+	const { _id, title, price, priceStripe, images } = product;
 
 	const handleAddToCart = () => {
 		const productToAdd = {
 			id: _id,
 			title,
 			price,
-			number: 1,
+			priceStripe,
+			quantity: 1,
 			imgUrl: images[0],
 		};
 

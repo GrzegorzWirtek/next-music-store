@@ -30,6 +30,7 @@
   --black-transparent: rgba(0, 0, 0, 0.127);
   --black-transparent-darker: rgba(0, 0, 0, 0.294);
   --modal-background-color: rgba(181, 181, 181, 0.742);
+  --black-hover: rgb(80, 80, 80);
 
   /* text */
   --header-font-size: 70px;

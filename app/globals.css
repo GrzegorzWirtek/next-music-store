@@ -31,6 +31,9 @@
   --black-transparent-darker: rgba(0, 0, 0, 0.294);
   --modal-background-color: rgba(181, 181, 181, 0.742);
   --black-hover: rgb(80, 80, 80);
+  --color-neutral: #828282;
+  --color-neutral-lighter: rgb(147, 147, 147);
+  --color-neutral-darker: #484848;
 
   /* text */
   --header-font-size: 70px;

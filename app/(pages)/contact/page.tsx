@@ -2,9 +2,9 @@ import Image from 'next/image';
 import logo from '@/public/logo-black.svg';
 import { shrikhand } from '@/utils/fonts';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 library.add(faPhone, faEnvelope);
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Contact() {
 	return (

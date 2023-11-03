@@ -1,6 +1,6 @@
 import NoResults from '@/components/no-results';
 import { Product as ProductProps } from '@/utils/types';
-import Product from '@/components/product';
+import Product from '@/components/Product';
 import getProducts from '@/utils/getProducts';
 
 import { SearchParams } from '@/utils/types';

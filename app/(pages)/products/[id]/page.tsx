@@ -1,8 +1,8 @@
 import getProducts from '@/utils/getProducts';
 import { notFound } from 'next/navigation';
 import { IdParams } from '@/utils/types';
-import Slider from '@/components/slider';
-import AddToCartBtn from '@/components/addToCardBtn';
+import Slider from '@/components/Slider';
+import AddToCartBtn from '@/components/AddToCardBtn';
 
 export default async function ProductId({ params }: IdParams) {
 	const product = await getProducts({ search: { _id: params.id } });

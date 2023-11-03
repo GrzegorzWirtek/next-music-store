@@ -1,8 +1,3 @@
-import fb from '@/public/fb.svg';
-import gh from '@/public/gh.svg';
-import ins from '@/public/in.svg';
-import Image from 'next/image';
-
 export default function Footer() {
 	return (
 		<div className='flex items-center justify-center gap-4 w-[95vw] max-w-7xl h-[100px] mx-auto mt-16 border-t border-[var(--color-neutral-lighter)]'>

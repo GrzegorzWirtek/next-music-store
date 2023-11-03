@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useAppContext } from '@/app/context/AppContext';
 import { plaifairDisplay } from '@/utils/fonts';
-import CartIsEmpty from './cartIsEmpty';
-import CartContent from './cartContent';
+import CartIsEmpty from './CartIsEmpty';
+import CartContent from './CartContent';
 import { useRouter } from 'next/navigation';
 
 export default function Cart() {

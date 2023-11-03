@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Product } from '@/utils/types';
 import { useRouter } from 'next/navigation';
 import { SyntheticEvent } from 'react';
-import AddToCartBtn from './addToCardBtn';
+import AddToCartBtn from './AddToCardBtn';
 
 export default function Product({
 	product,

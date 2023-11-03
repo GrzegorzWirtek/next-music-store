@@ -1,8 +1,8 @@
 'use client';
 
 import { Product as ProductProps } from '@/utils/types';
-import Product from './product';
-import Spinner from './spinner';
+import Product from './Product';
+import Spinner from './Spinner';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useState } from 'react';
 import getProducts from '@/utils/getProducts';

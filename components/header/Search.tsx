@@ -3,6 +3,7 @@ import search from '@/public/search.svg';
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import * as NProgress from 'nprogress';
 
 export default function Search() {
 	const [inputValue, setInputValue] = useState('');
@@ -12,6 +13,8 @@ export default function Search() {
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		inputRef?.current?.blur();
+
+		NProgress.start();
 		router.push(`/search?search=${inputValue}`);
 		setInputValue('');
 	};

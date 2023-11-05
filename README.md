@@ -4,7 +4,7 @@
 
 #### Responsive and fast e-commerce website written with **Next.js 13**, using **MongoDB Atlas**, **uploadthing.com** and **Stripe**.
 
-Visit page: **[Next music store](https://next-music-store.vercel.app/)**
+Visit page: **[Next music store](https://next-music-store-seven.vercel.app//)**
 
 ## General info
 

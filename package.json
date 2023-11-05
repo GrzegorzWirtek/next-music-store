@@ -19,6 +19,8 @@
     "add": "^2.0.6",
     "mongoose": "^7.5.3",
     "next": "latest",
+    "next-nprogress-bar": "^2.1.2",
+    "nextjs-toploader": "^1.6.4",
     "plaiceholder": "^3.0.0",
     "react": "latest",
     "react-device-detect": "^2.2.3",

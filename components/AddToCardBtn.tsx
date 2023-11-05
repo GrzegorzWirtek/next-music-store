@@ -2,6 +2,8 @@
 
 import { Product } from '@/utils/types';
 import { useAppContext } from '@/app/context/AppContext';
+import * as NProgress from 'nprogress';
+import { useEffect } from 'react';
 
 export default function AddToCartBtn({
 	product,
@@ -10,6 +12,10 @@ export default function AddToCartBtn({
 	product: Product;
 	style?: string;
 }) {
+	useEffect(() => {
+		NProgress.done();
+	}, []);
+
 	const { products, addToCart, activateModal, setModalContent } =
 		useAppContext();
 

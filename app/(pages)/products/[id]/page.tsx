@@ -12,6 +12,7 @@ export default async function ProductId({ params }: IdParams) {
 		src: `${process.env.NEXT_PUBLIC_UPLOADTHING_BASE_URL}${image}`,
 		alt: `${title} ${index + 1}`,
 	}));
+
 	return (
 		<div className='flex flex-wrap lg:flex-nowrap justify-center lg:px-10 pb-10'>
 			<div className='basis-full lg:basis-auto text-center'>

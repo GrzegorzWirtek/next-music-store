@@ -5,6 +5,8 @@ import { Poppins } from 'next/font/google';
 import { AppContextProvider } from './context/AppContext';
 import Footer from '@/components/Footer';
 
+import NextTopLoader from 'nextjs-toploader';
+
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600'] });
 
 export const metadata: Metadata = {
@@ -20,6 +22,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={poppins.className} suppressHydrationWarning={true}>
+				<NextTopLoader zIndex={30} showSpinner={false} />
 				<AppContextProvider>
 					<Header />
 					<main className='flex flex-col justify-center max-w-7xl m-auto min-h-[calc(100vh-7rem)] lg:min-h-[calc(100vh-5rem)]'>

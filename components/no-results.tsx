@@ -1,8 +1,15 @@
+'use client';
 import noResults from '@/public/no-search-results.png';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import * as NProgress from 'nprogress';
 
 export default function NoResults({ value }: { value: string }) {
+	useEffect(() => {
+		NProgress.done();
+	}, []);
+
 	return (
 		<div className='flex flex-col justify-center items-center z-20 bg-[var(--yellow)]'>
 			<Image className='w-16' alt='Page not found' src={noResults} />

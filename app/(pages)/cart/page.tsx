@@ -6,6 +6,7 @@ import { plaifairDisplay } from '@/utils/fonts';
 import CartIsEmpty from './CartIsEmpty';
 import CartContent from './CartContent';
 import { useRouter } from 'next/navigation';
+import * as NProgress from 'nprogress';
 
 export default function Cart() {
 	const { products, deleteById, increaseNr, decreaseNr } = useAppContext();
@@ -13,6 +14,7 @@ export default function Cart() {
 	const router = useRouter();
 
 	const handleOrder = async () => {
+		NProgress.start();
 		const stripeProducts = products.map((product) => {
 			return { price: product.priceStripe, quantity: product.quantity };
 		});

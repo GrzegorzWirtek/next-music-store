@@ -2,9 +2,10 @@
 
 import Image from 'next/image';
 import { Product } from '@/utils/types';
-import { useRouter } from 'next/navigation';
+import { useRouter, redirect } from 'next/navigation';
 import { SyntheticEvent } from 'react';
 import AddToCartBtn from './AddToCardBtn';
+import * as NProgress from 'nprogress';
 
 export default function Product({
 	product,
@@ -20,6 +21,7 @@ export default function Product({
 	const handleShowDetails = (e: SyntheticEvent) => {
 		const target = e.target as HTMLElement;
 		if (target.id === 'button') return;
+		NProgress.start();
 		router.push(`/products/${_id}`);
 	};
 

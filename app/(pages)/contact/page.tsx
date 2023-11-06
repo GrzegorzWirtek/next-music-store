@@ -35,7 +35,8 @@ export default function Contact() {
 			<div className='border-2 w-full max-w-[700px] h-[400px] mt-4 bg-gray-200 rounded-md overflow-hidden'>
 				<iframe
 					className='w-full h-full border-none'
-					src='https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13824.94565282042!2d21.009902416932206!3d52.22652216704632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1698768762823!5m2!1spl!2spl'></iframe>
+					src='https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13824.94565282042!2d21.009902416932206!3d52.22652216704632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1698768762823!5m2!1spl!2spl'
+					loading='lazy'></iframe>
 			</div>
 		</div>
 	);

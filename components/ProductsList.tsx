@@ -5,7 +5,6 @@ import Product from './Product';
 import Spinner from './Spinner';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useState } from 'react';
-import getProducts from '@/utils/getProducts';
 
 export default function ProductsList({
 	products,
@@ -14,7 +13,6 @@ export default function ProductsList({
 	products: ProductProps[];
 	limit?: number;
 }) {
-	// const [productsList, setProductsList] = useState(products);
 	const [productsList, setProductsList] = useState(products.slice(0, limit));
 	const [isThereMore, setIsThereMore] = useState(true);
 
@@ -23,7 +21,6 @@ export default function ProductsList({
 		const newProductsLimit = productsList.length + productsLimit;
 		const addedProducts = products.slice(productsList.length, newProductsLimit);
 		const data = productsList.concat(addedProducts);
-		// const data = await getProducts(newLimit);
 
 		if (data.length === productsList.length) return setIsThereMore(false);
 		setProductsList(data);

@@ -1,10 +1,13 @@
-'use server';
+// 'use server';
 
+import { cache } from 'react';
 import { connectMongoDB } from '@/mongodb/MongoConnect';
 import Product from '@/mongodb/ProductModel';
 import { SearchParameters } from '@/utils/types';
 
-export default async function getProducts(props?: SearchParameters) {
+export const revalidate = 3600;
+
+export const getProducts = cache(async (props?: SearchParameters) => {
 	try {
 		await connectMongoDB();
 		const products = await Product.find(
@@ -14,4 +17,4 @@ export default async function getProducts(props?: SearchParameters) {
 	} catch (error) {
 		console.log(error);
 	}
-}
+});

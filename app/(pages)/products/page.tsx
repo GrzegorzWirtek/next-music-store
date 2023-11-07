@@ -1,4 +1,4 @@
-import getProducts from '@/utils/getProducts';
+import { getProducts } from '@/utils/getProducts';
 import ProductsList from '@/components/ProductsList';
 import { plaifairDisplay } from '@/utils/fonts';
 

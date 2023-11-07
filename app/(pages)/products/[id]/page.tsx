@@ -1,4 +1,4 @@
-import getProducts from '@/utils/getProducts';
+import { getProducts } from '@/utils/getProducts';
 import { notFound } from 'next/navigation';
 import { IdParams } from '@/utils/types';
 import Slider from '@/components/Slider';
@@ -6,6 +6,7 @@ import AddToCartBtn from '@/components/AddToCardBtn';
 
 export default async function ProductId({ params }: IdParams) {
 	const product = await getProducts({ search: { _id: params.id } });
+
 	if (!product || !product.length) notFound();
 	const { title, category, price, descr, images } = product[0];
 	const imagesArr = images.map((image: string, index: number) => ({

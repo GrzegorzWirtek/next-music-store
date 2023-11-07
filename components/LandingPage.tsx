@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { plaifairDisplay } from '@/utils/fonts';
 import Product from '@/components/Product';
 import { Product as ProductProps } from '@/utils/types';
-import getProducts from '@/utils/getProducts';
+import { getProducts } from '@/utils/getProducts';
 import getBase64 from '@/utils/getBase64';
 import Link from 'next/link';
 

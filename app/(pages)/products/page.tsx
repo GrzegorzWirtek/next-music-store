@@ -4,7 +4,7 @@ import { plaifairDisplay } from '@/utils/fonts';
 
 export default async function Products() {
 	const limit = 12;
-	const products = await getProducts();
+	const products = await getProducts({ limit });
 
 	return (
 		<div className='max-w-7xl'>

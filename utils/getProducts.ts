@@ -1,11 +1,9 @@
-// 'use server';
+'use server';
 
 import { cache } from 'react';
 import { connectMongoDB } from '@/mongodb/MongoConnect';
 import Product from '@/mongodb/ProductModel';
 import { SearchParameters } from '@/utils/types';
-
-export const revalidate = 3600;
 
 export const getProducts = cache(async (props?: SearchParameters) => {
 	try {

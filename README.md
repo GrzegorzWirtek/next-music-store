@@ -8,7 +8,7 @@ Visit page: **[Next music store](https://next-music-store-seven.vercel.app//)**
 
 ## General info
 
-An e-commerce site, created using **TypeScript** with **Next.js 13** and styling with **Tailwind**. The site uses a **MongoDB Atlas** database pre-rendering all data on the server side. Products are displayed progressively using "infinite scroll". Graphics are stored on **uploadthing.com**, and payments of selected products are processed using **Stripe** (in this project Stripe payments are in test mode). The site is responsive and created with fast performance in mind.
+An e-commerce site, created using **TypeScript** with **Next.js 13** and styling with **Tailwind**. Product data, stored in the **MongoDB Atlas** database, is partially pre-rendered on the server side and then retrieved and displayed progressively using "infinite scroll". Graphics are stored on **uploadthing.com**, and payments of selected products are processed using **Stripe** (in this project Stripe payments are in test mode). The site is responsive and created with fast performance in mind.
 
 ## Technologies
 

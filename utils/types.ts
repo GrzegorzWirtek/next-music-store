@@ -13,12 +13,15 @@ export interface Product {
 	search?: string[];
 }
 
+export type Sort = { price: 'desc' | 'asc' };
+
 export interface SearchParameters {
 	search?:
 		| { landingPage: boolean }
 		| { _id: string }
 		| { [x: string]: { $regex: RegExp; $options: string } };
 	limit?: number | null;
+	sort?: Sort;
 }
 
 export interface SearchParams {
@@ -27,6 +30,10 @@ export interface SearchParams {
 
 export interface IdParams {
 	params: { id: string };
+}
+
+export interface SortParams {
+	searchParams: Sort;
 }
 
 export interface Images {

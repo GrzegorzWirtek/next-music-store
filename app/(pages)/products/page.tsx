@@ -2,6 +2,7 @@ import { getProducts } from '@/utils/getProducts';
 import ProductsList from '@/components/ProductsList';
 import { plaifairDisplay } from '@/utils/fonts';
 import { SortParams } from '@/utils/types';
+import Sort from '@/components/filters/Sort';
 
 export default async function Products({ searchParams }: SortParams) {
 	const limit = 4;
@@ -15,6 +16,7 @@ export default async function Products({ searchParams }: SortParams) {
 				className={`${plaifairDisplay.className} text-center text-4xl my-10 font-semibold`}>
 				All products
 			</h2>
+			<Sort />
 			<ProductsList products={products} limit={limit} sort={sort} />
 		</div>
 	);

@@ -25,7 +25,7 @@ export interface SearchParameters {
 }
 
 export interface SearchParams {
-	searchParams: { search: string; category: string };
+	searchParams: { search: string; category: string; price: string };
 }
 
 export interface IdParams {

@@ -11,11 +11,21 @@ export default function Sort() {
 
 	const handleClick = () => {
 		if (pathname === '/products') {
-			router.push(`/products?price=asc`);
+			router.push(`/products?&price=asc`);
 		} else if (paramSearch) {
 			router.push(`/search?search=${paramSearch}&price=asc`);
 		} else if (paramCategory) {
 			router.push(`/search?category=${paramCategory}&price=asc`);
+		}
+	};
+
+	const handleClickDesc = () => {
+		if (pathname === '/products') {
+			router.push(`/products?price=desc`);
+		} else if (paramSearch) {
+			router.push(`/search?search=${paramSearch}&price=desc`);
+		} else if (paramCategory) {
+			router.push(`/search?category=${paramCategory}&price=desc`);
 		}
 	};
 
@@ -25,6 +35,11 @@ export default function Sort() {
 				className='bg-[var(--blue)] text-white px-8 py-2'
 				onClick={handleClick}>
 				SORT
+			</button>
+			<button
+				className='bg-[var(--blue)] text-white px-8 py-2'
+				onClick={handleClickDesc}>
+				SORT desc
 			</button>
 		</div>
 	);

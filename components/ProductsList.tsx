@@ -4,10 +4,11 @@ import { Product as ProductProps, Sort as SortType } from '@/utils/types';
 import Product from './Product';
 import Spinner from './Spinner';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { getProducts } from '@/utils/getProducts';
 import Sort from '@/components/filters/Sort';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
+import * as NProgress from 'nprogress';
 
 export default function ProductsList({
 	products,
@@ -18,32 +19,35 @@ export default function ProductsList({
 }) {
 	const [productsList, setProductsList] = useState(products);
 	const [isThereMore, setIsThereMore] = useState(true);
-	const [currentLimit, setCurrentLimit] = useState(limit);
 	const sortParam = useSearchParams();
-	const sortValue = sortParam.get('price');
+	const paramPrice = sortParam.get('price');
+	const paramLimit = sortParam.get('limit');
 	const sort = useMemo(() => {
 		return { price: sortParam.get('price') } as SortType;
 	}, [sortParam]);
+	const router = useRouter();
 
 	useEffect(() => {
-		if (!sortValue) return;
+		if (!paramPrice) return;
 		const getSortProducts = async () => {
-			const data = await getProducts({ limit: currentLimit, sort });
+			const data = await getProducts({ limit: parseInt(paramLimit!), sort });
+			NProgress.done();
 			setProductsList(data);
+			if (paramLimit! > data.length) return setIsThereMore(false);
 		};
 
 		getSortProducts();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [sortParam, sortValue, sort]);
+	}, [sortParam, sort, paramPrice, paramLimit]);
 
-	const getMoreProducts = useCallback(async () => {
+	const setparamLimit = () => {
 		const newLimit = productsList.length + limit;
-		setCurrentLimit(newLimit);
-		const data = await getProducts({ limit: newLimit, sort });
-
-		if (data.length === productsList.length) return setIsThereMore(false);
-		setProductsList(data);
-	}, [limit, productsList.length, sort]);
+		router.push(
+			`products?price=${paramPrice ? paramPrice : 'default'}&limit=${newLimit}`,
+			{
+				scroll: false,
+			},
+		);
+	};
 
 	const loaderComponent = (
 		<div className='basis-full flex justify-center my-10'>
@@ -57,7 +61,7 @@ export default function ProductsList({
 			<InfiniteScroll
 				className='flex flex-wrap justify-center min-h-full'
 				dataLength={productsList.length}
-				next={getMoreProducts}
+				next={setparamLimit}
 				hasMore={isThereMore}
 				loader={loaderComponent}
 				endMessage={

@@ -3,7 +3,7 @@ import ProductsList from '@/components/ProductsList';
 import { plaifairDisplay } from '@/utils/fonts';
 
 export default async function Products() {
-	const limit = 4;
+	const limit = parseInt(process.env.NEXT_PUBLIC_PAGES_LIMIT!);
 
 	const products = await getProducts({ limit });
 

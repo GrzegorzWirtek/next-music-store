@@ -13,7 +13,7 @@ export interface Product {
 	search?: string[];
 }
 
-export type Sort = { price: 'desc' | 'asc' };
+export type Sort = { price: 'desc' | 'asc' | 'default' };
 
 export interface SearchParameters {
 	search?:

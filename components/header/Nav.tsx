@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import disableScroll from '@/utils/disableScroll';
 import enableScroll from '@/utils/enableScroll';
@@ -16,6 +17,7 @@ export default function Nav() {
 	const MIN_WIDHT_DESKTOP = 1024;
 	const [mobileNavActive, setMobileNavActive] = useState(false);
 	const { isModalActive } = useAppContext();
+	const pathname = usePathname();
 
 	const openMobileNav = () => {
 		setMobileNavActive((prev) => !prev);
@@ -59,15 +61,20 @@ export default function Nav() {
 					{mobileNavActive && (
 						<li className='mb-5 pb-10 border-b-[1px]'>{<Logo />}</li>
 					)}
-					{NAV_ITEMS.map((item) => (
-						<li className='mb-3 lg:mb-auto' key={item}>
-							<Link
-								href={`/${item.toLocaleLowerCase()}`}
-								className='text-white transition-hover duration-200 text-xl lg:text-base lg:hover:drop-shadow-hover'>
-								{item}
-							</Link>
-						</li>
-					))}
+					{NAV_ITEMS.map((item) => {
+						const isActive = pathname === `/${item.toLowerCase()}`;
+						return (
+							<li className='mb-3 lg:mb-auto' key={item}>
+								<Link
+									href={`/${item.toLocaleLowerCase()}`}
+									className={`text-white transition-hover duration-200 text-xl lg:text-base lg:hover:drop-shadow-hover ${
+										isActive ? 'opacity-50 pointer-events-none' : ''
+									}`}>
+									{item}
+								</Link>
+							</li>
+						);
+					})}
 				</ul>
 			</nav>
 		</>

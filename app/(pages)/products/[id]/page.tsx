@@ -5,7 +5,7 @@ import Slider from '@/components/Slider';
 import AddToCartBtn from '@/components/AddToCardBtn';
 
 export default async function ProductId({ params }: IdParams) {
-	const product = await getProducts({ search: { _id: params.id } });
+	const product = await getProducts({ searchById: { _id: params.id } });
 
 	if (!product || !product.length) notFound();
 	const { title, category, price, descr, images } = product[0];

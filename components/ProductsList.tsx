@@ -1,48 +1,69 @@
 'use client';
 
-import { Product as ProductProps, Sort as SortType } from '@/utils/types';
+import {
+	Product as ProductProps,
+	SearchValueProps,
+	Sort as SortType,
+} from '@/utils/types';
 import Product from './Product';
 import Spinner from './Spinner';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useEffect, useMemo, useState } from 'react';
 import { getProducts } from '@/utils/getProducts';
 import Sort from '@/components/filters/Sort';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import * as NProgress from 'nprogress';
 
 export default function ProductsList({
 	products,
 	limit,
+	searchByPhraze,
 }: {
 	products: ProductProps[];
 	limit: number;
+	searchByPhraze?: SearchValueProps;
 }) {
 	const [productsList, setProductsList] = useState(products);
 	const [isThereMore, setIsThereMore] = useState(true);
-	const sortParam = useSearchParams();
-	const paramPrice = sortParam.get('price');
-	const paramLimit = sortParam.get('limit');
+	const pathName = usePathname();
+	const param = useSearchParams();
+	const priceParam = param.get('price');
+	const limitParam = param.get('limit');
+	const categoryParam = param.get('category');
+	const searchParam = param.get('search');
 	const sort = useMemo(() => {
-		return { price: sortParam.get('price') } as SortType;
-	}, [sortParam]);
+		return { price: param.get('price') } as SortType;
+	}, [param]);
 	const router = useRouter();
 
 	useEffect(() => {
-		if (!paramPrice) return;
+		if (!priceParam && !searchParam) return;
+
 		const getSortProducts = async () => {
-			const data = await getProducts({ limit: parseInt(paramLimit!), sort });
+			const data = await getProducts({
+				limit: parseInt(limitParam!),
+				sort,
+				searchByPhraze,
+			});
 			NProgress.done();
+
 			setProductsList(data);
-			if (paramLimit! > data.length) return setIsThereMore(false);
+			if (limitParam! > data.length) return setIsThereMore(false);
 		};
 
 		getSortProducts();
-	}, [sortParam, sort, paramPrice, paramLimit]);
+	}, [sort, priceParam, searchParam, limitParam, searchByPhraze]);
 
-	const setparamLimit = () => {
+	const setlimitParam = () => {
 		const newLimit = productsList.length + limit;
+		const paramCategorySearch = categoryParam
+			? `category=${categoryParam}&`
+			: '';
+		const paramSearch = searchParam ? `search=${searchParam}&` : '';
 		router.push(
-			`products?price=${paramPrice ? paramPrice : 'default'}&limit=${newLimit}`,
+			`${pathName}?${paramCategorySearch}${paramSearch}price=${
+				priceParam ? priceParam : 'default'
+			}&limit=${newLimit}`,
 			{
 				scroll: false,
 			},
@@ -61,7 +82,7 @@ export default function ProductsList({
 			<InfiniteScroll
 				className='flex flex-wrap justify-center min-h-full'
 				dataLength={productsList.length}
-				next={setparamLimit}
+				next={setlimitParam}
 				hasMore={isThereMore}
 				loader={loaderComponent}
 				endMessage={

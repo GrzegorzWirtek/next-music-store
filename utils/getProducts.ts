@@ -18,9 +18,22 @@ export const getProducts = cache(async (props?: SearchParameters) => {
 		};
 	}
 
+	const search = function () {
+		if (props?.searchByLandingPage) return props.searchByLandingPage;
+		else if (props?.searchById) return props?.searchById;
+		else if (props?.searchByPhraze)
+			return {
+				[props.searchByPhraze.key]: {
+					$regex: new RegExp(props.searchByPhraze.param),
+					$options: 'i',
+				},
+			};
+		else return {};
+	};
+
 	try {
 		await connectMongoDB();
-		const products = await Product.find(props?.search ? props?.search : {})
+		const products = await Product.find(search())
 			.sort(sortParams)
 			.limit(props?.limit ? props?.limit : 0);
 		return JSON.parse(JSON.stringify(products));

@@ -15,11 +15,15 @@ export interface Product {
 
 export type Sort = { price: 'desc' | 'asc' | 'default' };
 
+export interface SearchValueProps {
+	key: string;
+	param: string;
+}
+
 export interface SearchParameters {
-	search?:
-		| { landingPage: boolean }
-		| { _id: string }
-		| { [x: string]: { $regex: RegExp; $options: string } };
+	searchByLandingPage?: { landingPage: boolean };
+	searchById?: { _id: string };
+	searchByPhraze?: { key: string; param: string };
 	limit?: number | null;
 	sort?: Sort;
 }

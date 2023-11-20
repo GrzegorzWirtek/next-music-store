@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 export default async function LangindPage() {
 	const products = await getProducts({
-		search: { landingPage: true },
+		searchByLandingPage: { landingPage: true },
 		limit: 5,
 	});
 

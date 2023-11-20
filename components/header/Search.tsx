@@ -7,6 +7,7 @@ import * as NProgress from 'nprogress';
 
 export default function Search() {
 	const [inputValue, setInputValue] = useState('');
+	const [currentValue, setCurrentValue] = useState('');
 	const router = useRouter();
 	const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -14,7 +15,11 @@ export default function Search() {
 		e.preventDefault();
 		inputRef?.current?.blur();
 
-		NProgress.start();
+		if (currentValue !== inputValue) {
+			NProgress.start();
+		}
+
+		setCurrentValue(inputValue);
 		router.push(`/search?search=${inputValue}`);
 		setInputValue('');
 	};

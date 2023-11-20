@@ -37,7 +37,7 @@ export default function ProductsList({
 	const router = useRouter();
 
 	useEffect(() => {
-		if (!priceParam && !searchParam) return;
+		if (!priceParam) return setProductsList(products);
 
 		const getSortProducts = async () => {
 			const data = await getProducts({
@@ -52,7 +52,7 @@ export default function ProductsList({
 		};
 
 		getSortProducts();
-	}, [sort, priceParam, searchParam, limitParam, searchByPhraze]);
+	}, [sort, priceParam, limitParam, searchByPhraze, products]);
 
 	const setlimitParam = () => {
 		const newLimit = productsList.length + limit;

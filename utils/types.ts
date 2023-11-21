@@ -16,14 +16,14 @@ export interface Product {
 export type Sort = { price: 'desc' | 'asc' | 'default' };
 
 export interface SearchValueProps {
-	key: string;
-	param: string;
+	value: string;
 }
 
 export interface SearchParameters {
 	searchByLandingPage?: { landingPage: boolean };
 	searchById?: { _id: string };
-	searchByPhraze?: { key: string; param: string };
+	searchByPhraze?: { value: string };
+	searchByCategory?: { value: string };
 	limit?: number | null;
 	sort?: Sort;
 }

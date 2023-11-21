@@ -18,10 +18,12 @@ export default function ProductsList({
 	products,
 	limit,
 	searchByPhraze,
+	searchByCategory,
 }: {
 	products: ProductProps[];
 	limit: number;
 	searchByPhraze?: SearchValueProps;
+	searchByCategory?: SearchValueProps;
 }) {
 	const [productsList, setProductsList] = useState(products);
 	const [isThereMore, setIsThereMore] = useState(true);
@@ -44,6 +46,7 @@ export default function ProductsList({
 				limit: parseInt(limitParam!),
 				sort,
 				searchByPhraze,
+				searchByCategory,
 			});
 			NProgress.done();
 
@@ -52,7 +55,14 @@ export default function ProductsList({
 		};
 
 		getSortProducts();
-	}, [sort, priceParam, limitParam, searchByPhraze, products]);
+	}, [
+		sort,
+		priceParam,
+		limitParam,
+		searchByPhraze,
+		searchByCategory,
+		products,
+	]);
 
 	const setlimitParam = () => {
 		const newLimit = productsList.length + limit;

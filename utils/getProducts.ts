@@ -23,10 +23,16 @@ export const getProducts = cache(async (props?: SearchParameters) => {
 		else if (props?.searchById) return props?.searchById;
 		else if (props?.searchByPhraze)
 			return {
-				[props.searchByPhraze.key]: {
-					$regex: new RegExp(props.searchByPhraze.param),
+				search: {
+					$regex: new RegExp(props.searchByPhraze.value),
 					$options: 'i',
 				},
+			};
+		else if (props?.searchByCategory)
+			return {
+				category:
+					props?.searchByCategory.value[0].toUpperCase() +
+					props?.searchByCategory.value.slice(1),
 			};
 		else return {};
 	};

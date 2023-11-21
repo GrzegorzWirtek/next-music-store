@@ -10,17 +10,11 @@ export default async function Search({ searchParams }: SearchParams) {
 	const searchValue = search ? search : category;
 	const limit = parseInt(process.env.NEXT_PUBLIC_PAGES_LIMIT!);
 
-	const searchKeys = [];
+	const searchByPhraze = { value: searchValue };
+	const searchByCategory = { value: searchValue };
+	const searchObj = search ? { searchByPhraze } : { searchByCategory };
 
-	for (const key in searchParams) {
-		searchKeys.push(key);
-	}
-
-	const searchByPhraze = { key: searchKeys[0], param: searchValue };
-
-	const products: ProductProps[] = await getProducts({
-		searchByPhraze,
-	});
+	const products: ProductProps[] = await getProducts(searchObj);
 
 	if (!products.length) return <NoResults value={searchValue} />;
 
@@ -30,6 +24,7 @@ export default async function Search({ searchParams }: SearchParams) {
 				products={products}
 				limit={limit}
 				searchByPhraze={searchByPhraze}
+				searchByCategory={searchByCategory}
 			/>
 		</div>
 	);

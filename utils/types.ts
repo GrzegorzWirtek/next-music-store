@@ -16,24 +16,32 @@ export interface Product {
 export type Sort = { price: 'desc' | 'asc' | 'default' };
 
 export interface SearchValueProps {
-	value: string;
+	search: string;
+}
+
+export interface SearchByCategory {
+	category: string;
 }
 
 export interface SearchParameters {
 	searchByLandingPage?: { landingPage: boolean };
 	searchById?: { _id: string };
-	searchByPhraze?: { value: string };
-	searchByCategory?: { value: string };
+	searchByPhraze?: { search: string };
+	searchByCategory?: { category: string };
 	limit?: number | null;
 	sort?: Sort;
 }
 
-export interface SearchParams {
-	searchParams: { search: string; category: string; price: string };
-}
-
 export interface IdParams {
 	params: { id: string };
+}
+
+export interface CategoryParams {
+	params: SearchByCategory;
+}
+
+export interface SearchParams {
+	params: SearchValueProps;
 }
 
 export interface SortParams {

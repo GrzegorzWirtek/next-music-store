@@ -29,8 +29,6 @@ export default function Sort() {
 	const router = useRouter();
 	const pathname = usePathname();
 	const searchParams = useSearchParams();
-	const paramSearch = searchParams.get('search');
-	const paramCategory = searchParams.get('category');
 	const paramLimit = searchParams.get('limit');
 	const paramPrice = searchParams.get('price');
 	const [selectValue, setSelectValue] = useState(sortOptions[0]);
@@ -40,17 +38,11 @@ export default function Sort() {
 	}, [paramPrice]);
 
 	const changeUrl = (sortValue: string) => {
-		if (pathname === '/products') {
-			router.push(
-				`/products?price=${sortValue}&limit=${
-					paramLimit ? paramLimit : process.env.NEXT_PUBLIC_PAGES_LIMIT
-				}`,
-			);
-		} else if (paramSearch) {
-			router.push(`/search?search=${paramSearch}&price=${sortValue}`);
-		} else if (paramCategory) {
-			router.push(`/search?category=${paramCategory}&price=${sortValue}`);
-		}
+		router.push(
+			`${pathname}?price=${sortValue}&limit=${
+				paramLimit ? paramLimit : process.env.NEXT_PUBLIC_PAGES_LIMIT
+			}`,
+		);
 	};
 
 	const handleSelectChange: ChandleSelectChange = (selectedOption) => {

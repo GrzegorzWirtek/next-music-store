@@ -15,7 +15,7 @@ export default function Categories() {
 				<Link
 					className='w-[150px] h-[185px] flex flex-wrap items-end justify-center p-3 rounded-md transition-hover duration-200 bg-gradient-to-b from-[var(--white-transparent)] to-transparent bg-[var(--black-transparent)] cursor-pointer group hover:shadow-hover'
 					key={category}
-					href={`/search?category=${category}`}>
+					href={`/categories/${category}`}>
 					<Image
 						className='p-2 transition-transform duration-300 w-full h-auto group-hover:scale-105'
 						alt={category}

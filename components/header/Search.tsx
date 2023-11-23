@@ -20,7 +20,7 @@ export default function Search() {
 		}
 
 		setCurrentValue(inputValue);
-		router.push(`/search?search=${inputValue}`);
+		router.push(`/search/${inputValue}`);
 		setInputValue('');
 	};
 

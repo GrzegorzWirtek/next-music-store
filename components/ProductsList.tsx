@@ -3,6 +3,7 @@
 import {
 	Product as ProductProps,
 	SearchValueProps,
+	SearchByCategory,
 	Sort as SortType,
 } from '@/utils/types';
 import Product from './Product';
@@ -23,7 +24,7 @@ export default function ProductsList({
 	products: ProductProps[];
 	limit: number;
 	searchByPhraze?: SearchValueProps;
-	searchByCategory?: SearchValueProps;
+	searchByCategory?: SearchByCategory;
 }) {
 	const [productsList, setProductsList] = useState(products);
 	const [isThereMore, setIsThereMore] = useState(true);
@@ -31,8 +32,6 @@ export default function ProductsList({
 	const param = useSearchParams();
 	const priceParam = param.get('price');
 	const limitParam = param.get('limit');
-	const categoryParam = param.get('category');
-	const searchParam = param.get('search');
 	const sort = useMemo(() => {
 		return { price: param.get('price') } as SortType;
 	}, [param]);
@@ -66,12 +65,9 @@ export default function ProductsList({
 
 	const setlimitParam = () => {
 		const newLimit = productsList.length + limit;
-		const paramCategorySearch = categoryParam
-			? `category=${categoryParam}&`
-			: '';
-		const paramSearch = searchParam ? `search=${searchParam}&` : '';
+
 		router.push(
-			`${pathName}?${paramCategorySearch}${paramSearch}price=${
+			`${pathName}?price=${
 				priceParam ? priceParam : 'default'
 			}&limit=${newLimit}`,
 			{

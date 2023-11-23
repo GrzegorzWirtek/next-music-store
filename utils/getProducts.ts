@@ -24,15 +24,16 @@ export const getProducts = cache(async (props?: SearchParameters) => {
 		else if (props?.searchByPhraze)
 			return {
 				search: {
-					$regex: new RegExp(props.searchByPhraze.value),
+					$regex: new RegExp(props.searchByPhraze.search),
 					$options: 'i',
 				},
 			};
 		else if (props?.searchByCategory)
 			return {
-				category:
-					props?.searchByCategory.value[0].toUpperCase() +
-					props?.searchByCategory.value.slice(1),
+				category: {
+					$regex: new RegExp(props.searchByCategory.category),
+					$options: 'i',
+				},
 			};
 		else return {};
 	};

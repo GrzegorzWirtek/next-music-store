@@ -56,8 +56,22 @@ export default function Sort() {
 	};
 
 	return (
-		<div className='w-[95vw] max-w-[300px] mx-auto'>
+		<div className='flex basis-full justify-center my-6 lg:my-10'>
 			<Select
+				styles={{
+					control: (base, state) => ({
+						width: '95vw',
+						maxWidth: '300px',
+						display: 'flex',
+						fontSize: '16px',
+						border: '1px solid #D6D6D6',
+						borderRadius: '6px',
+						backgroundColor: 'white',
+						boxShadow: state.isFocused
+							? '0px 0px 5px 0px rgba(205, 205, 205, 1)'
+							: 'none',
+					}),
+				}}
 				value={selectValue}
 				getOptionValue={(sortOptions) => sortOptions.label}
 				options={sortOptions}

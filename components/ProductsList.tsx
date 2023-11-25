@@ -83,10 +83,10 @@ export default function ProductsList({
 	);
 
 	return (
-		<>
+		<div className='flex flex-col w-full'>
 			<Sort />
 			<InfiniteScroll
-				className='flex flex-wrap justify-center min-h-full'
+				className='flex flex-wrap justify-center w-full'
 				dataLength={productsList.length}
 				next={setlimitParam}
 				hasMore={isThereMore}
@@ -100,6 +100,6 @@ export default function ProductsList({
 					<Product key={product._id} product={product} />
 				))}
 			</InfiniteScroll>
-		</>
+		</div>
 	);
 }

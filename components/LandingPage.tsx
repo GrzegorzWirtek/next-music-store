@@ -47,7 +47,7 @@ export default async function LangindPage() {
 					/>
 				</div>
 				<div className='basis-auto smr-3 grid grid-cols-2 grid-rows-2'>
-					<h2 className='row-start-1 row-end-2 text-center font-semibold'>
+					<h2 className='row-start-1 row-end-2 mr-2 text-center font-semibold'>
 						{mainProduct.title}
 					</h2>
 					<p className='row-start-2 row-end-3 text-center font-semibold'>
@@ -55,7 +55,7 @@ export default async function LangindPage() {
 					</p>
 					<Link
 						href={`/products/${mainProduct._id}`}
-						className='bg-[var(--red)] transition-hover duration-200 hover:bg-[var(--red-lighter)] text-white py-2 px-4 rounded-lg row-start-1 row-end-3 self-center'>
+						className='bg-[var(--red)] text-center transition-hover duration-200 hover:bg-[var(--red-lighter)] text-white py-2 rounded-lg row-start-1 row-end-3 self-center'>
 						Details
 					</Link>
 				</div>

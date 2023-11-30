@@ -15,6 +15,8 @@ import Sort from '@/components/filters/Sort';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import * as NProgress from 'nprogress';
 
+export const revalidate = 3600;
+
 export default function ProductsList({
 	products,
 	limit,

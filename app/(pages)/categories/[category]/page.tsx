@@ -13,12 +13,10 @@ export default async function Category({ params }: CategoryParams) {
 	if (!products || !products.length) notFound();
 
 	return (
-		<div className='flex flex-wrap lg:flex-nowrap justify-center lg:px-10 pb-10'>
-			<ProductsList
-				products={products}
-				limit={limit}
-				searchByCategory={{ category: params.category }}
-			/>
-		</div>
+		<ProductsList
+			products={products}
+			limit={limit}
+			searchByCategory={{ category: params.category }}
+		/>
 	);
 }
